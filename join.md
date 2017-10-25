@@ -69,7 +69,7 @@ join: ville2.txt:3 : n'est pas trié : Julie Pau
 Paul 17 Marseille
 ```
 
-Pour ordonner le fichier `ville2.txt`, vous pouvez utiliser la commande `sort` :
+Pour ordonner le fichier `ville2.txt`, on utilise la commande `sort` :
 
 ```
 $ sort -k 1 ville2.txt 
@@ -80,7 +80,7 @@ Julie Pau
 Paul Marseille
 ```
 
-Le paramètre `-k 1` signifie que voulez ordonner le fichier basé sur la première colonne.
+Le paramètre `-k 1` signifie qu'on ordonne le fichier basé sur la première colonne.
 
 En utilisant `join` et `sort`, vous pouvez combinez le fichier `age.txt` (ordonné) et le fichier `ville2.txt` (non ordonné) :
 
@@ -93,7 +93,7 @@ Julie 23 Pau
 Paul 17 Marseille
 ```
 
-Bien sur, les deux fichiers sont désordonnés, cela fonctionne également :
+Bien sur, si les deux fichiers sont désordonnés, cela fonctionne également :
 
 ```
 $ cat age2.txt 
@@ -118,10 +118,12 @@ Julie 23 Pau
 Paul 17 Marseille
 ```
 
+À chaque fois, on réordonne les fichiers sur la base de la première colonne qui contient les prénoms.
+
 
 ## Séparateur
 
-Le **séparateur** est le caractère utilisé pour séparer les différentes colonnes de données. Par défaut `join` utilise un espace.
+Le **séparateur** est le caractère utilisé pour séparer les différentes colonnes de données. Par défaut, `join` utilise un espace.
 
 Vous pouvez spécifiez votre propre séparateur avec l'option `-t`. Par exemple :
 
@@ -196,7 +198,7 @@ Julie Pau
 Paul Marseille
 ```
 
-Si vous fusionnez les deux fichiers, voici ce que vous obtenez :
+Si on fusionne les deux fichiers, voici ce qu'on obtient :
 
 ```
 $ join age.txt ville.txt
@@ -207,7 +209,7 @@ Paul 17 Marseille
 
 Seuls les données communent aux deux fichiers sont prises en compte.
 
-Vous pouvez forcer l'affichage des données d'un fichier, même si elles n'ont pas toutes de correspondance dans l'autre fichier.
+On peut forcer l'affichage des données d'un fichier, même si elles n'ont pas toutes de correspondance dans l'autre fichier.
 
 Pour afficher toutes les données du premier fichier, on utilise l'option `-a1`.
 
@@ -263,7 +265,7 @@ Julie ? Pau
 Paul 17 Marseille
 ```
 
-Dans cet exemple, c'est le caractère `?` qui représente la valeur manquante. Vous auriez très bien aussi pu utiliser `--`, `NaN`, `inconnu`, `0`...
+Dans cet exemple, c'est le caractère `?` qui représente la valeur manquante. On aurait très bien aussi pu utiliser `--`, `NaN`, `inconnu`, `0`...
 
 L'option `-o "0,1.2,2.2"` nécessite un peu plus d'explications. `0,1.2,2.2` signifie qu'on affiche la colonne utilisée pour fusionner les données (`0`), la seconde colonne du premier fichier (`1.2`) et la seconde colonne du second fichier (`2.2`). C'est un peu complexe mais très puissant !
 
