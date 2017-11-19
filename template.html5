@@ -96,6 +96,8 @@ $endfor$
 </head>
 <body>
 
+<h1>Cours d'Unix - $if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</h1>
+
 <p>Version du 
 $if(date)$
 $date$
