@@ -206,7 +206,7 @@ man     bob         186     33
 ```
 
 
-Exemple. Afficher les lignes pour lesquelles la quatrième colonne est inférieur (strictement) à 30 **ou** la quatrième colonne est supérieure à 60 :
+Exemple. Afficher les lignes pour lesquelles la quatrième colonne est inférieure (strictement) à 30 **ou** supérieure (strictement) à 60 :
 
 ```
 $ awk '$4 < 30 || $4 > 60' people.dat
@@ -449,7 +449,7 @@ $ awk 'NR==1 {print NF}' people.tsv
 ```
 
 
-Par contre, dans un fichier au format [*comma-separated values*](https://fr.wikipedia.org/wiki/Comma-separated_values) (`.csv`), les différents champs sont séparés par le caractère `,`. Par exemple, dans le fichier `people.csv` :
+Par contre, dans un fichier au format [*comma-separated values*](https://fr.wikipedia.org/wiki/Comma-separated_values) (`.csv`), les différents champs sont séparés par une virgule. Par exemple, dans le fichier `people.csv` :
 
 ```
 man,simon,175,33
