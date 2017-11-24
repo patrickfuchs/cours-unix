@@ -291,6 +291,17 @@ User ${USER} is working on computer ${HOSTNAME}
 Soyez très attentifs aux différents type de guillemets utilisées (simple `'`, double `"` ou inversé `).
 
 
+Astuce : récupérer la racine d'un nom de fichier, c'est-à-dire son nom sans l'extension.
+
+```
+$ name="people.dat"
+$ root1=$(basename $name .dat)
+$ root2=${name%.dat}
+$ echo ${name} ${root1} ${root2}
+people.dat people people
+```
+
+
 ### Manipulation de variables
 
 Bash ne sait manipuler que les variables numériques entières :
@@ -318,18 +329,99 @@ I love Unix
 ```
 
 
-Astuce : récupérer la racine d'un nom de fichier, c'est-à-dire son nom sans l'extension.
+### Boucles for
+
+Voici une boucle sur une liste d'éléments explicits :
 
 ```
-$ name="people.dat"
-$ root1=$(basename $name .dat)
-$ root2=${name%.dat}
-$ echo ${name} ${root1} ${root2}
-people.dat people people
+for fruit in pomme poire fraise
+do
+    echo ${fruit}
+done
+```
+
+Les actions à réaliser pour chacun des éléments de la boucle sont entre `do` et `done`. Ici, il n'y a qu'une action `echo ${fruit}`, c'est-à-dire l'affichage du contenu de la variable `fruit`. 
+
+L'indentation -- le retrait à droite -- des actions à réaliser dans la boucle n'est pas obligatoire mais facilite la lecture de la boucle.
+
+
+Voici maintenant une boucle sur les fichiers `.html` du répertoire courant :
+
+```
+for i in *.html
+do
+    echo $i
+done
+```
+
+Et une boucle pour afficher tous les mots d'un fichier, un mot par ligne :
+
+```
+for i in $(cat fichier)
+do
+    echo $i
+done
+```
+
+La même chose sur une seule ligne :
+
+```
+for i in $(cat fichier) ; do echo $i ; done
 ```
 
 
-## Pour conclure sur la programme en générale et Bash en particulier
+### Test
+
+Pour faire un test, il faut réaliser une comparaison. Une comparaison utilise des opérateurs logiques.
+
+Opérateurs pour les entiers :
+
+| opérateur  | signification        |
+|------------|----------------------|
+| `-eq`      | égal à               |
+| `-ne`      | différent de         |
+| `-gt`      | supérieur à          |
+| `-ge`      | supérieur ou égale à |
+| `-lt`      | inférieur à          |
+| `-le`      | inférieur ou égale à |
+
+
+Opérateurs pour les chaînes de caractères :
+
+| opérateur  | signification        |
+|------------|----------------------|
+| `=`        | égal à               |
+| `!=`       | différent de         |
+| `>`        | supérieur à          |
+| `<`        | inférieur à          |
+| `-z`       | vide                 |
+
+
+Enfin, on peut également combiner plusieurs comparaisons dans un test avec des opérateurs booléens :
+
+| opérateur  | signification |
+|------------|---------------|
+| `!`        | négation      |
+| `&&`       | et            |
+| `!!`       | ou            |
+
+
+Voici un premier test simple qui n'utilise pas de comparaisons :
+
+```
+if grep ORGANISM *gbk
+then
+    echo "recherche dans *.gbk"
+else
+    echo "recherche echouee"
+fi
+```
+
+Si le mot-clef `ORGANISM` est trouvé dans les répertoires Genbank du répertoire courant `*.gbk` alors on affiche `recherche dans *.gbk`. Si ce n'est pas le cas, alors on affiche `recherche echouee`.
+
+
+
+## Pour conclure sur la programmation en générale et Bash en particulier
 
 > Programs must be written for people to read, and only incidentally for machines to execute.
 
