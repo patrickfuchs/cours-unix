@@ -598,7 +598,9 @@ Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts B
 
 ## Ressources
 
-[Bash scripting quirks & safety tips](https://jvns.ca/blog/2017/03/26/bash-quirks/)
+[Shell Scripting Tutorial](https://www.shellscript.sh/index.html) : un tutoriel intéressant sur *shell* Bash.
 
-[ShellCheck](https://www.shellcheck.net/) : un outil en ligne qui vérifie la qualité d'un script Bash et propose des coseils pour l'améliorer.
+[Bash scripting quirks & safety tips](https://jvns.ca/blog/2017/03/26/bash-quirks/) : bonnes pratiques sur l'écriture de scripts Bash.
+
+[ShellCheck](https://www.shellcheck.net/) : un outil en ligne qui vérifie la qualité d'un script Bash et propose des conseils pour l'améliorer.
 
