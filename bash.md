@@ -15,14 +15,14 @@ Dans ce qui suit, l'invite du shell sera représentée par le symbole `$` en dé
 
 ## Variables et variables d'environnement
 
-En Bash, il est possible de définir un certain nombre d'objets, qui vont contenir de l'information et résidés dans la mémoire du shell.
+En Bash, il est possible de définir un certain nombre d'objets, qui vont contenir de l'information et résidés dans la mémoire du *shell*.
 
 
 ### Variables locales
 
 Les variables locales ne sont pas transmistes au processus fils.
 
-Par convention, elles sont écrites en miniscules. Par exemple: 
+Par convention, elles sont écrites en minuscules. Par exemple: 
 
 ```
 $ a=1
@@ -31,7 +31,7 @@ $ test='ma chaine de caracteres'
 
 Attention. Il n'y a pas d'espace avant ou après le symbole `=` !
 
-Si `var` est une variable, alors `$var` permet d'accéder au contenu de la variable et `echo $var` affiche le contenu de cette variable. Par exemple :
+Si `var` est une variable, alors `$var` donne accès au contenu de la variable et `echo $var` affiche le contenu de cette variable. Par exemple :
 
 ```
 $ a=1
@@ -42,7 +42,7 @@ $ echo $test
 ma chaine de caracteres
 ```
 
-Attention à ne pas confondre l'invite du shell en début de ligne `$` avec l'appel de la variable avec `$var`.
+Attention à ne pas confondre l'invite du *shell* en début de ligne `$` avec l'appel de la variable avec `$var`.
 
 Lors de l'utilisation d'une variable, il est fortement recommandé d'entourer son nom pas des accolades `{ }`. Par exemple : 
 
@@ -93,7 +93,7 @@ export ftp_proxy=http://www-cache.script.univ-paris-diderot.fr:3128/
 
 ### Configuration du shell Bash
 
-L'utilisateur peut configurer son shell Bash dans le fichier `.bashrc` situé dans le répertoire utilisateur (`$HOME`).
+L'utilisateur peut configurer son *shell* Bash dans le fichier `.bashrc` situé dans le répertoire utilisateur (`$HOME`).
 
 Exemple de fichier `.bashrc` :
 
@@ -108,11 +108,11 @@ export PATH=${PATH}:/my/new/dir
 
 ### Variables et caractères spéciaux
 
-Les noms de variables peuvent contenir les lettre `A` à `Z`, `a` à `z` et les chiffres `0` à `9` ainsi que le caractère `_`
+Les noms de variables peuvent contenir les lettres de `A` à `Z`, de `a` à `z` et les chiffres de `0` à `9` ainsi que le caractère `_`, `-` et `.`.
 
 Il ne faut pas utiliser les caractères spéciaux  `* ? ! $ < > & \ / " '  ; #` et évitez les espaces.
 
-Le caractère `\` "échappe" le caractère spécial suivant de l’interprétation du shell.
+Le caractère `\` "échappe" le caractère spécial suivant de l’interprétation du *shell*.
 
 Les guillemets doubles (`"`) permettent l'interprétation des variables mais pas les guillemets simples (`'`). Exemple :
 
@@ -133,9 +133,9 @@ mon login est $USER
 
 En programmation, on a besoin de faire 3 choses bien distinctes :
 
-1. Stocker de l'information (par les variables).
-2. Répéter des actions (par les boucles).
-3. Prendre des décisions (par les tests).
+1. Stocker de l'information (les variables).
+2. Répéter des actions (les boucles).
+3. Prendre des décisions (les tests).
 
 Une fois qu'on sait faire ces 3 choses, on peut pratiquement tout faire.
 
@@ -152,9 +152,31 @@ Pour être lancé, le script (par exemple `script.sh`) doit être rendu exécuta
 $ chmod +x script.sh
 ```
 
+Cette opération n'est à faire qu'une seule fois.
+
+Le script est ensuité exécuté en l'appelant avec son nom, précédé de `./` si il se trouve dans le répertoire courant :
+
+```
+$ ./script.sh
+```
+
+ou du chemin complet vers le script :
+
+```
+$ /home/pierre/unix/script.sh
+```
+
+
+On peut parfaitement exécuter un script Bash sans qu'il ne soit exécutable. Mais il faut pour cela appeler explicitement l'interpréteur Bash :
+
+```
+$ bash script.sh
+```
+
+
 #### Première ligne et shebang
 
-La première ligne du script est une ligne particulière qui débute par les caractères `#!` qu'on appelle [Shebang](https://fr.wikipedia.org/wiki/Shebang) (ou shabang) et qui contient le chemin pour trouver l'interpréteur de commandes, c'est-à-dire le shell. Pour Bash, on utilise :
+La première ligne du script est une ligne particulière qui débute par les caractères `#!` qu'on appelle [Shebang](https://fr.wikipedia.org/wiki/Shebang) (ou shabang) et qui contient le chemin pour trouver l'interpréteur de commandes, c'est-à-dire le *shell*. Pour Bash, on utilise :
 
 ```
 #! /bin/bash
@@ -175,6 +197,7 @@ La commmande précédente est celle qui permettra d'utiliser le script Bash sur 
 #! /usr/bin/env bash -norc
 ```
 
+
 #### Arguments et variables prédéfinies
 
 Dans un script Bash, tout ce qui suit le caractère `#` est ignoré et considéré comme un commentaire (sauf pour la première ligne et le shebang).
@@ -183,7 +206,7 @@ Il existe des variables prédéfinies comme :
 
 - `$1`, `$2`... les arguments de la ligne de commande.
 - `$*` tous les arguments de la ligne de commande.
-- `$#` le nombre d'argument de la ligne de commande.
+- `$#` le nombre d'arguments de la ligne de commande.
 
 Par exemple, avec le script `test.sh` suivant :
 
@@ -269,18 +292,18 @@ echo "User ${USER} is working on computer ${HOSTNAME}"
 echo 'User ${USER} is working on computer ${HOSTNAME}'
 ```
 
-Et son utilisation, en vérifiant que le script est bien exécutable :
+On le rend exécutable avant la première utilisation :
 
 ```
 $ chmod +x bash_example.sh 
-pierre@jeera:bash$ ls -l bash_example.sh 
+$ ls -l bash_example.sh 
 -rwxrwxr-x 1 pierre pierre 301 nov.  22 15:03 bash_example.sh*
 ```
 
-Puis : 
+Puis on l'exécute : 
 
 ```
-pierre@jeera:bash$ ./bash_example.sh 
+$ ./bash_example.sh 
 123
 Test for bash script
 people.dat
@@ -340,7 +363,7 @@ do
 done
 ```
 
-Les actions à réaliser pour chacun des éléments de la boucle sont entre `do` et `done`. Ici, il n'y a qu'une action `echo ${fruit}`, c'est-à-dire l'affichage du contenu de la variable `fruit`. 
+Les actions à réaliser pour chacun des éléments de la boucle sont entre les mot-clefs `do` et `done`. Ici, il n'y a qu'une action `echo ${fruit}`, c'est-à-dire l'affichage du contenu de la variable `fruit`. 
 
 L'indentation -- le retrait à droite -- des actions à réaliser dans la boucle n'est pas obligatoire mais facilite la lecture de la boucle.
 
@@ -372,7 +395,38 @@ for i in $(cat fichier) ; do echo $i ; done
 
 ### Test
 
-Pour faire un test, il faut réaliser une comparaison. Une comparaison utilise des opérateurs logiques.
+Les tests sont très utiles pour prendre des décisions. 
+
+#### Structure
+
+Voici un premier test simple qui n'utilise pas de comparaison :
+
+```
+if free -h | grep Mem
+then 
+    echo "Calcul de la mémoire vive : OK"
+fi
+```
+
+Si la commande `free -h | grep Mem` qui permet d'obtenir la quantité de mémoire vive sur la machine s'exécute correctement, alors le programme affiche `Calcul de la mémoire vive : OK`.
+
+Les actions à exécuter lorsque le test est correct se trouvent entre les mot-clefs `then` et `fi`. On peut ajouter le mot-clef `else` pour exécuter des actions sur le test n'est pas correct :
+
+```
+if free -h | grep Mem
+then
+    echo "Calcul de la mémoire vive : OK"
+else
+    echo "Calcul de la mémoire vive impossible"
+fi
+```
+
+Si la commande `free -h | grep Mem` ne s'exécute pas correctement alors le programme affiche `Calcul de la mémoire vive impossible`.
+
+
+#### Opérateurs de comparaison
+
+Mais le plus souvent, pour faire un test, il faut réaliser une ou plusieurs comparaisons. Une comparaison utilise des opérateurs.
 
 Opérateurs pour les entiers :
 
@@ -397,6 +451,44 @@ Opérateurs pour les chaînes de caractères :
 | `-z`       | vide                 |
 
 
+Voici un premier exemple avec une comparaison de nombres entiers :
+
+```
+i=4
+if [[ $i -eq 10 ]]
+then
+    echo "i vaut $i"
+else
+    echo "test negatif"
+fi
+```
+
+Et deux autres avec des comparaisons de chaînes de caractères :
+
+```
+prenom="Pierre"
+if [[ ${prenom} = "Pierre" ]]
+then
+    echo "Accès autorisé"
+else
+    echo "Accès refusé"
+fi
+```
+
+
+```
+msg="hello"
+if [[ ! -z ${msg} ]]
+then
+    echo "msg vaut ${msg}"
+else
+    echo "msg est nulle"
+fi
+```
+
+
+#### Combinaisons de comparaison
+
 Enfin, on peut également combiner plusieurs comparaisons dans un test avec des opérateurs booléens :
 
 | opérateur  | signification |
@@ -406,37 +498,102 @@ Enfin, on peut également combiner plusieurs comparaisons dans un test avec des 
 | `!!`       | ou            |
 
 
-Voici un premier test simple qui n'utilise pas de comparaisons :
+Exemple :
 
 ```
-if grep ORGANISM *gbk
+msg="hello"
+nombre=2
+if [[ ! -z ${msg} && ${nombre} -eq 2 ]]
 then
-    echo "recherche dans *.gbk"
-else
-    echo "recherche echouee"
+    echo "tests OK"
 fi
 ```
 
-Si le mot-clef `ORGANISM` est trouvé dans les répertoires Genbank du répertoire courant `*.gbk` alors on affiche `recherche dans *.gbk`. Si ce n'est pas le cas, alors on affiche `recherche echouee`.
 
+
+### Boucle while
+
+Il existe un second type de boucles, qui utilise le mot-clef `while` :
+
+```
+nombre=1
+while [[ ${nombre} -le 5 ]]
+do
+    echo "nombre vaut ${nombre}"
+    let nombre++
+done
+```
+
+Si on enregistre cet exemple dans le script `while.sh` et qu'on l'exécute ensuite, on obtient :
+
+```
+$ ./while.sh 
+nombre vaut 1
+nombre vaut 2
+nombre vaut 3
+nombre vaut 4
+nombre vaut 5
+```
+
+La boucle s'exécute tant que la variable `nombre` est inférieure ou égale à 5.
+
+Les boucles while sont un peu particulières car pour fonctionner, elles ont besoin d'une variable :
+
+- initialisée avant la boucle (`nombre=1`) ;
+- testée au niveau du mot-clef `while` (`while [[ ${nombre} -le 5 ]]`) ;
+- et incrémentée (modifiée) dans le corps de la boucle, c'est-à-dire entre les mot-clefs `do` et `done` (`let nombre++`).
+
+
+### Quitter un script
+
+La commande `exit` permet de quitter un script. Voici un exemple avec le script `exit.sh` et qui en plus utilise la boucle `while` et le test avec `if` :
+
+```
+#! /usr/bin/env bash
+
+# script pour tester la commande exit
+
+nombre=1
+while [[ ${nombre} -le 5 ]]
+do
+    echo "nombre vaut ${nombre}"
+    if [[ ${nombre} -eq 3 ]]
+    then
+        echo "Au revoir"
+        exit
+    fi
+    let nombre++
+done
+```
+
+On rend exécutable ce script avec la commande `chmod`, puis on le lance :
+
+```
+$ chmod +x exit.sh 
+$ ./exit.sh 
+nombre vaut 1
+nombre vaut 2
+nombre vaut 3
+Au revoir
+```
+
+Quand la variable `nombre` atteint la valeur 3, le test `[[ ${nombre} -eq 3 ]]` est vérifié et le script s'arrête avec la commande `exit`.
 
 
 ## Pour conclure sur la programmation en générale et Bash en particulier
 
 > Programs must be written for people to read, and only incidentally for machines to execute.
 
--- [Harold Abelsen](https://fr.wikipedia.org/wiki/Hal_Abelson), *Structure and Interpretation of Computer Programs*, The MIT Press, 1996, préface de la première édition. H. Abelsen est informaticien et un membre fondateur des Creatives Commons et de la Free Software Foundation.
+-- [Harold Abelsen](https://fr.wikipedia.org/wiki/Hal_Abelson), *Structure and Interpretation of Computer Programs*, The MIT Press, 1996, préface de la première édition. 
 
-Vos programmes et scripts doivent contenir : 
+H. Abelsen est informaticien et un membre fondateur des Creatives Commons et de la Free Software Foundation.
 
-- des commentaires précis et réguliers ;
+
+Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts Bash clairs et lisibles. Pour cela, vos programmes et scripts doivent contenir : 
+
+- des commentaires précis et informatifs ;
 - des noms de variables qui ont du sens ;
 - une structure et une organisation claire.
-
-
-
-
-
 
 
 ## Ressources
