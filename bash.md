@@ -600,3 +600,5 @@ Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts B
 
 [Bash scripting quirks & safety tips](https://jvns.ca/blog/2017/03/26/bash-quirks/)
 
+[ShellCheck](https://www.shellcheck.net/) : un outil en ligne qui vérifie la qualité d'un script Bash et propose des coseils pour l'améliorer.
+
