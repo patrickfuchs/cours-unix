@@ -8,9 +8,9 @@ license: "Creative Commons Attribution - Partage à l’identique 3.0"
 
 # Bash
 
-Bash est un interpréteur de ligne de commande (*shell*) utilisé sur des systèmes Unix / Linux. C'est un des shells les plus utilisés sous Linux.
+Bash est un interpréteur de ligne de commande (*shell*) utilisé sur des systèmes Unix / Linux. C'est un des *shells* les plus utilisés sous Linux.
 
-Dans ce qui suit, l'invite du shell sera représentée par le symbole `$` en début de ligne.
+Dans ce qui suit, l'invite du *shell* sera représentée par le symbole `$` en début de ligne.
 
 
 ## Variables et variables d'environnement
@@ -70,12 +70,12 @@ Youplaboum
 
 Voici quelques variables d'environnement d'intérêt :
 
-- `PATH` contient les chemins d’accès (répertoires) où le shell recherche les commandes tapées par l’utilisateur.
+- `PATH` contient les chemins d’accès (répertoires) où le *shell* recherche les commandes tapées par l’utilisateur.
     ```
     export PATH=${PATH}:/my/new/dir
     ```
     ajoute le contenu de `/my/new/dir` à la variable `PATH`.
-- `SHELL` contient le chemin vers le shell utilisateur (`/bin/bash` bien souvent).
+- `SHELL` contient le chemin vers le *shell* utilisateur (`/bin/bash` bien souvent).
 - `USER` contient le nom (identifiant) de l’utilisateur.
 - `HOSTNAME` contient le nom de la machine.
 - `PWD` contient le chemin du répertoire courant.
@@ -91,7 +91,7 @@ export ftp_proxy=http://www-cache.script.univ-paris-diderot.fr:3128/
 ```
 
 
-### Configuration du shell Bash
+### Configuration du *shell* Bash
 
 L'utilisateur peut configurer son *shell* Bash dans le fichier `.bashrc` situé dans le répertoire utilisateur (`$HOME`).
 
@@ -474,7 +474,7 @@ else
 fi
 ```
 
-Notez bien l'utilisation des doubles crochets ouvrantes et fermants (`[[ ]]`) qui encadrent la comparaison. Il est impératif de garder un espace après `[[ ` et un espace avant ` ]]`.
+Notez bien l'utilisation des doubles crochets ouvrants et fermants (`[[ ]]`) qui encadrent la comparaison. Il est impératif de garder un espace après `[[ ` et un espace avant ` ]]`.
 
 Voici maintenant deux autres exemples avec des comparaisons de chaînes de caractères :
 
@@ -515,6 +515,8 @@ Si le fichier `/bin/bash` existe, alors on affiche le message `Shell Bash trouv�
 
 **Remarque :** Vous pourrez trouver dans des livres ou sur internet d'autres manières d'écrire des tests, comme :
 
+- avec un seul crochet ouvrant et fermant `[ ]` :
+
 ```
 msg="hello"
 if [ ! -z ${msg} ]
@@ -525,7 +527,7 @@ else
 fi
 ```
 
-ou
+- avec la commande Bash `test` :
 
 ```
 msg="hello"
@@ -564,7 +566,7 @@ then
 fi
 ```
 
-La combinaison des deux comparaisons `! -z ${msg}` et `${nombre} -eq 2` se fait avec l'opérateur "et" logique `&&`. Les deux comparaisons se trouvent entre les doubles crochets `[[` et `]]`.
+La combinaison des deux comparaisons `! -z ${msg}` et `${nombre} -eq 2` se fait avec l'opérateur *et* logique `&&`. Les deux comparaisons se trouvent entre les doubles crochets `[[` et `]]`.
 
 
 ### Boucle while
