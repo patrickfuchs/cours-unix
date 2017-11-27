@@ -142,7 +142,7 @@ Une fois qu'on sait faire ces 3 choses, on peut pratiquement tout faire.
 
 ### Script
 
-La plupart du temps, quand il y a plusieurs commandes Bash, on les écrit dans un fichier qu'on appelle script.
+La plupart du temps, quand il y a plusieurs commandes Bash, on les écrit dans un fichier qu'on appelle un script.
 
 #### Exécution
 
@@ -163,11 +163,11 @@ $ ./script.sh
 ou du chemin complet vers le script :
 
 ```
-$ /home/pierre/unix/script.sh
+$ /chemin/complet/script.sh
 ```
 
 
-On peut parfaitement exécuter un script Bash sans qu'il ne soit exécutable. Mais il faut pour cela appeler explicitement l'interpréteur Bash :
+**Remarque :** On peut parfaitement exécuter un script Bash sans qu'il ne soit exécutable. Mais il faut pour cela appeler explicitement l'interpréteur Bash :
 
 ```
 $ bash script.sh
@@ -191,7 +191,7 @@ ou plus générique :
 La commmande précédente est celle qui permettra d'utiliser le script Bash sur le plus de systèmes d'exploitation Unix / Linux différents. C'est celle à utiliser.
 
 
-À noter que l'option `-norc` permet ne pas tenir en compte le fichier de configuration `.bashrc` défini par l'utilisateur. Ce qui donne comme première ligne du script :
+À noter que l'option `-norc` permet ne pas prendre en compte le fichier de configuration `.bashrc` défini par l'utilisateur. Ce qui donne comme première ligne du script :
 
 ```
 #! /usr/bin/env bash -norc
@@ -236,7 +236,7 @@ Deuxième argument : titi
 Troisième argument : 
 ```
 
-On remarque que l'affichage du troisième argument, qui pourtant n'existe pas, ne pose pas de problème à Bash. Par défaut, si une variable est appelée alors qu'elle n'a pas été définie au préalable, ça valeur est une chaîne de caractères vide.
+On remarque que l'affichage du troisième argument, qui pourtant n'existe pas, ne pose pas de problème à Bash. Par défaut, si une variable est appelée alors qu'elle n'a pas été définie au préalable, sa valeur est une chaîne de caractères vide.
 
 Si on utilise maintenant `test.sh` avec trois arguments (`toto`, `titi` et `42`) :
 
@@ -259,7 +259,7 @@ $ echo ${nombre_femmes}
 6
 ```
 
-On peut utiliser également les caractères ` :
+On peut utiliser également les caractères `` ` `` :
 
 ```
 $ nombre_femmes=`awk '/woman/' people.dat | wc -l`
@@ -311,10 +311,10 @@ User pierre is working on computer jeera
 User ${USER} is working on computer ${HOSTNAME}
 ```
 
-Soyez très attentifs aux différents type de guillemets utilisées (simple `'`, double `"` ou inversé `).
+Soyez très attentifs aux différents type de guillemets utilisées (simples `'`, doubles `"` ou inversés `` ` ``).
 
 
-Astuce : récupérer la racine d'un nom de fichier, c'est-à-dire son nom sans l'extension.
+**Astuce** : Récupérer la racine d'un nom de fichier, c'est-à-dire son nom sans l'extension.
 
 ```
 $ name="people.dat"
@@ -354,7 +354,7 @@ I love Unix
 
 ### Boucles for
 
-Voici une boucle sur une liste d'éléments explicits :
+Les boucles permettent de répéter plusieurs fois des actions. Voici une boucle sur une liste d'éléments explicits :
 
 ```
 for fruit in pomme poire fraise
@@ -410,7 +410,7 @@ fi
 
 Si la commande `free -h | grep Mem` qui permet d'obtenir la quantité de mémoire vive sur la machine s'exécute correctement, alors le programme affiche `Calcul de la mémoire vive : OK`.
 
-Les actions à exécuter lorsque le test est correct se trouvent entre les mot-clefs `then` et `fi`. On peut ajouter le mot-clef `else` pour exécuter des actions sur le test n'est pas correct :
+Les actions à exécuter lorsque le test est correct se trouvent entre les mot-clefs `then` et `fi`. On peut ajouter le mot-clef `else` pour exécuter des actions si le test n'est pas correct :
 
 ```
 if free -h | grep Mem
@@ -428,7 +428,7 @@ Si la commande `free -h | grep Mem` ne s'exécute pas correctement alors le prog
 
 Mais le plus souvent, pour faire un test, il faut réaliser une ou plusieurs comparaisons. Une comparaison utilise des opérateurs.
 
-Opérateurs pour les entiers :
+Opérateurs pour des entiers :
 
 | opérateur  | signification        |
 |------------|----------------------|
@@ -440,7 +440,7 @@ Opérateurs pour les entiers :
 | `-le`      | inférieur ou égale à |
 
 
-Opérateurs pour les chaînes de caractères :
+Opérateurs pour des chaînes de caractères :
 
 | opérateur  | signification        |
 |------------|----------------------|
@@ -450,6 +450,17 @@ Opérateurs pour les chaînes de caractères :
 | `<`        | inférieur à          |
 | `-z`       | vide                 |
 
+Opérateurs pour des fichiers :
+
+| opérateur  | signification                                         |
+|------------|-------------------------------------------------------|
+| `-e`       | le fichier existe                                     |
+| `-s`       | le fichier existe et sa taille est non nulle          |
+| `-r`       | le fichier existe et est lisible par l'utilisateur    |
+| `-w`       | le fichier existe et est modifiable par l'utilisateur |
+| `-x`       | le fichier existe et est exécutable par l'utilisateur |
+
+L'opérateur `!` est un peu particulier car c'est l'opérateur de négation. 
 
 Voici un premier exemple avec une comparaison de nombres entiers :
 
@@ -463,7 +474,9 @@ else
 fi
 ```
 
-Et deux autres avec des comparaisons de chaînes de caractères :
+Notez bien l'utilisation des doubles crochets ouvrantes et fermants (`[[ ]]`) qui encadrent la comparaison. Il est impératif de garder un espace après `[[ ` et un espace avant ` ]]`.
+
+Voici maintenant deux autres exemples avec des comparaisons de chaînes de caractères :
 
 ```
 prenom="Pierre"
@@ -486,6 +499,49 @@ else
 fi
 ```
 
+La comparaison `-z ${msg}` vérifie si la variable `msg` est vide donc la comparaison `! -z ${msg}` vérifie que `msg` n'est **pas** vide.
+
+Enfin, voici un dernier exemple avec une comparaison de fichier :
+
+```
+if [[ -e /bin/bash ]]
+then
+    echo "Shell Bash trouvé !"
+fi
+```
+
+Si le fichier `/bin/bash` existe, alors on affiche le message `Shell Bash trouvé !`.
+
+
+**Remarque :** Vous pourrez trouver dans des livres ou sur internet d'autres manières d'écrire des tests, comme :
+
+```
+msg="hello"
+if [ ! -z ${msg} ]
+then
+    echo "msg vaut ${msg}"
+else
+    echo "msg est nulle"
+fi
+```
+
+ou
+
+```
+msg="hello"
+if test ! -z ${msg}
+then
+    echo "msg vaut ${msg}"
+else
+    echo "msg est nulle"
+fi
+```
+
+mais la méthode avec les doubles crochets `[[ ]]` est celle qui est recommandée et qu'il faut utiliser avec Bash. Pour en savoir plus, vous pouvez lire :
+
+- [Bash test and comparison functions](https://www.ibm.com/developerworks/library/l-bash-test/index.html)
+- [Test Constructs](http://www.tldp.org/LDP/abs/html/testconstructs.html)
+
 
 #### Combinaisons de comparaison
 
@@ -493,7 +549,6 @@ Enfin, on peut également combiner plusieurs comparaisons dans un test avec des 
 
 | opérateur  | signification |
 |------------|---------------|
-| `!`        | négation      |
 | `&&`       | et            |
 | `!!`       | ou            |
 
@@ -509,6 +564,7 @@ then
 fi
 ```
 
+La combinaison des deux comparaisons `! -z ${msg}` et `${nombre} -eq 2` se fait avec l'opérateur "et" logique `&&`. Les deux comparaisons se trouvent entre les doubles crochets `[[` et `]]`.
 
 
 ### Boucle while
@@ -537,7 +593,7 @@ nombre vaut 5
 
 La boucle s'exécute tant que la variable `nombre` est inférieure ou égale à 5.
 
-Les boucles while sont un peu particulières car pour fonctionner, elles ont besoin d'une variable :
+Les boucles `while` sont un peu particulières car pour fonctionner, elles ont besoin d'une variable :
 
 - initialisée avant la boucle (`nombre=1`) ;
 - testée au niveau du mot-clef `while` (`while [[ ${nombre} -le 5 ]]`) ;
@@ -596,7 +652,7 @@ Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts B
 - une structure et une organisation claire.
 
 
-## Ressources
+## Ressources complémentaires
 
 [Shell Scripting Tutorial](https://www.shellscript.sh/index.html) : un tutoriel intéressant sur *shell* Bash.
 
