@@ -20,13 +20,13 @@ En Bash, il est possible de définir un certain nombre d'objets, qui vont conten
 
 ### Variables locales
 
-Les variables locales ne sont pas transmistes au processus fils.
+Les variables locales ne sont pas transmises au processus fils.
 
-Par convention, elles sont écrites en minuscules. Par exemple: 
+Par convention, elles sont écrites en minuscules. Par exemple : 
 
 ```
 $ a=1
-$ test='ma chaine de caracteres'
+$ test='ma chaîne de caractères'
 ```
 
 Attention. Il n'y a pas d'espace avant ou après le symbole `=` !
@@ -37,9 +37,9 @@ Si `var` est une variable, alors `$var` donne accès au contenu de la variable e
 $ a=1
 $ echo $a
 1
-$ test='ma chaine de caracteres'
+$ test='ma chaîne de caractères'
 $ echo $test
-ma chaine de caracteres
+ma chaîne de caractères
 ```
 
 Attention à ne pas confondre l'invite du *shell* en début de ligne `$` avec l'appel de la variable avec `$var`.
@@ -72,17 +72,18 @@ Voici quelques variables d'environnement d'intérêt :
 
 - `PATH` contient les chemins d’accès (répertoires) où le *shell* recherche les commandes tapées par l’utilisateur.
     ```
-    export PATH=${PATH}:/my/new/dir
+    export PATH=${PATH}:/mon/nouveau/repertoire
     ```
-    ajoute le contenu de `/my/new/dir` à la variable `PATH`.
+    ajoute le contenu de `/mon/nouveau/repertoire` à la variable `PATH`.
 - `SHELL` contient le chemin vers le *shell* utilisateur (`/bin/bash` bien souvent).
 - `USER` contient le nom (identifiant) de l’utilisateur.
 - `HOSTNAME` contient le nom de la machine.
+- `HOME` contient le chemin vers le répertoire personnel de l'utilisateur.
 - `PWD` contient le chemin du répertoire courant.
 
 La commande `env` affiche toutes les variables d'environnement.
 
-Au Script, la connexion internet se fait via un proxy. Pour l'utiliser, il faut définir quelques variables d'environnement : 
+Au Script, la connexion internet se fait via un [proxy](https://fr.wikipedia.org/wiki/Proxy). Pour l'utiliser, il faut définir quelques variables d'environnement : 
 
 ```
 export http_proxy=http://www-cache.script.univ-paris-diderot.fr:3128/
@@ -106,13 +107,12 @@ export PATH=${PATH}:/my/new/dir
 ```
 
 
-### Variables et caractères spéciaux
+### Noms de variables et caractères spéciaux
 
-Les noms de variables peuvent contenir les lettres de `A` à `Z`, de `a` à `z` et les chiffres de `0` à `9` ainsi que le caractère `_`, `-` et `.`.
+Les noms de variables peuvent contenir des lettres majuscules de `A` à `Z`, des lettres minuscules de `a` à `z`, des chiffres de `0` à `9` ainsi que les caractères `_`, `-` ou `.`.
 
-Il ne faut pas utiliser les caractères spéciaux  `* ? ! $ < > & \ / " '  ; #` et évitez les espaces.
 
-Le caractère `\` "échappe" le caractère spécial suivant de l’interprétation du *shell*.
+### Guillemets doubles et simples
 
 Les guillemets doubles (`"`) permettent l'interprétation des variables mais pas les guillemets simples (`'`). Exemple :
 
@@ -122,6 +122,36 @@ mon login est pierre
 $ echo 'mon login est ${USER}'
 mon login est $USER
 ```
+
+
+## Attention aux caractères spéciaux dans les noms de fichiers
+
+L'utilisation des caractères spéciaux  `* ? ! $ < > & \ / " '  ; #` et des espaces dans les noms de fichiers n'est pas recommandé.
+
+Le caractère `\` *échappe* le caractère spécial suivant de l’interprétation du *shell*.
+
+Par exemple, avec le fichier `mon fichier.txt`, l'affichage de son contenu (`hello world`) avec la commande `cat` pourra être problématique. Sans *échapper* l'espace contenu dans `mon fichier.txt`, `cat` va vouloir afficher les fichiers `mon` et `fichier.txt`, qui bien sur n'existent pas :
+
+```
+$ cat mon fichier.txt
+cat: mon: Aucun fichier ou dossier de ce type
+cat: fichier.txt: Aucun fichier ou dossier de ce type
+```
+
+Par contre, avec un espace correctement *échappé* avec `\` ou le nom de fichier entre guillemets, on peut afficher le contenu de `mon fichier.txt`.
+
+```
+$ cat mon\ fichier.txt
+hello world
+
+$ cat "mon fichier.txt"
+hello world
+
+$ cat 'mon fichier.txt'
+hello world
+```
+
+Mais de manière générale, ne mettez pas d'espace dans vos noms de fichiers.
 
 
 ## Programmation
@@ -146,7 +176,7 @@ La plupart du temps, quand il y a plusieurs commandes Bash, on les écrit dans u
 
 #### Exécution
 
-Pour être lancé, le script (par exemple `script.sh`) doit être rendu exécutable :
+Pour pouvoir lancer un script, il doit être rendu exécutable. Par exemple avec `script.sh` :
 
 ```
 $ chmod +x script.sh
@@ -160,7 +190,7 @@ Le script est ensuité exécuté en l'appelant avec son nom, précédé de `./` 
 $ ./script.sh
 ```
 
-ou du chemin complet vers le script :
+ou du chemin complet vers le script si il se trouve dans un autre répertoire :
 
 ```
 $ /chemin/complet/script.sh
@@ -208,7 +238,7 @@ Il existe des variables prédéfinies comme :
 - `$*` tous les arguments de la ligne de commande.
 - `$#` le nombre d'arguments de la ligne de commande.
 
-Par exemple, avec le script `test.sh` suivant :
+Par exemple, avec le script `arg.sh` suivant :
 
 ```
 #! /usr/bin/env bash
@@ -225,7 +255,7 @@ echo "Deuxième argument : $2"
 echo "Troisième argument : $3"
 ```
 
-Si on utilise maintenant `test.sh` avec deux arguments (`toto` et `titi`) :
+Si on utilise maintenant `arg.sh` avec deux arguments (`toto` et `titi`) :
 
 ```
 $ ./test.sh toto titi 
@@ -238,7 +268,7 @@ Troisième argument :
 
 On remarque que l'affichage du troisième argument, qui pourtant n'existe pas, ne pose pas de problème à Bash. Par défaut, si une variable est appelée alors qu'elle n'a pas été définie au préalable, sa valeur est une chaîne de caractères vide.
 
-Si on utilise maintenant `test.sh` avec trois arguments (`toto`, `titi` et `42`) :
+Si on utilise maintenant `arg.sh` avec trois arguments (`toto`, `titi` et `42`) :
 
 ```
 $ ./test.sh toto titi 42
@@ -272,7 +302,7 @@ Toutefois, l'utilisation de `$( )` est préférable.
 
 #### Un dernier exemple
 
-Voici le script `bash_example.sh` :
+Voici le script `var.sh` :
 
 ```
 #! /usr/bin/env bash
@@ -295,15 +325,15 @@ echo 'User ${USER} is working on computer ${HOSTNAME}'
 On le rend exécutable avant la première utilisation :
 
 ```
-$ chmod +x bash_example.sh 
-$ ls -l bash_example.sh 
--rwxrwxr-x 1 pierre pierre 301 nov.  22 15:03 bash_example.sh*
+$ chmod +x var.sh 
+$ ls -l var.sh 
+-rwxrwxr-x 1 pierre pierre 301 nov.  22 15:03 var.sh*
 ```
 
 Puis on l'exécute : 
 
 ```
-$ ./bash_example.sh 
+$ ./var.sh 
 123
 Test for bash script
 people.dat
@@ -314,7 +344,7 @@ User ${USER} is working on computer ${HOSTNAME}
 Soyez très attentifs aux différents type de guillemets utilisées (simples `'`, doubles `"` ou inversés `` ` ``).
 
 
-**Astuce** : Récupérer la racine d'un nom de fichier, c'est-à-dire son nom sans l'extension.
+**Astuce** : Récupérer la racine d'un nom de fichier, c'est-à-dire son nom sans l'extension, par deux méthodes.
 
 ```
 $ name="people.dat"
@@ -399,7 +429,7 @@ Les tests sont très utiles pour prendre des décisions.
 
 #### Structure
 
-Voici un premier test simple qui n'utilise pas de comparaison :
+Voici un premier test simple :
 
 ```
 if free -h | grep Mem
@@ -426,12 +456,12 @@ Si la commande `free -h | grep Mem` ne s'exécute pas correctement alors le prog
 
 #### Opérateurs de comparaison
 
-Mais le plus souvent, pour faire un test, il faut réaliser une ou plusieurs comparaisons. Une comparaison utilise des opérateurs.
+Mais le plus souvent, pour faire un test, on réalise une ou plusieurs comparaisons. Une comparaison utilise des opérateurs.
 
 Opérateurs pour des entiers :
 
 | opérateur  | signification        |
-|------------|----------------------|
+|:----------:|----------------------|
 | `-eq`      | égal à               |
 | `-ne`      | différent de         |
 | `-gt`      | supérieur à          |
@@ -443,17 +473,18 @@ Opérateurs pour des entiers :
 Opérateurs pour des chaînes de caractères :
 
 | opérateur  | signification        |
-|------------|----------------------|
+|:----------:|----------------------|
 | `=`        | égal à               |
 | `!=`       | différent de         |
 | `>`        | supérieur à          |
 | `<`        | inférieur à          |
 | `-z`       | vide                 |
 
+
 Opérateurs pour des fichiers :
 
 | opérateur  | signification                                         |
-|------------|-------------------------------------------------------|
+|:----------:|-------------------------------------------------------|
 | `-e`       | le fichier existe                                     |
 | `-s`       | le fichier existe et sa taille est non nulle          |
 | `-r`       | le fichier existe et est lisible par l'utilisateur    |
@@ -513,9 +544,9 @@ fi
 Si le fichier `/bin/bash` existe, alors on affiche le message `Shell Bash trouvé !`.
 
 
-**Remarque :** Vous pourrez trouver dans des livres ou sur internet d'autres manières d'écrire des tests, comme :
+**Remarque :** Vous pourrez trouver dans des livres ou sur internet d'autres manières d'écrire des tests.
 
-- avec un seul crochet ouvrant et fermant `[ ]` :
+- Avec un seul crochet ouvrant et fermant `[ ]` :
 
 ```
 msg="hello"
@@ -527,7 +558,7 @@ else
 fi
 ```
 
-- avec la commande Bash `test` :
+- Avec la commande Bash `test` :
 
 ```
 msg="hello"
@@ -539,7 +570,7 @@ else
 fi
 ```
 
-mais la méthode avec les doubles crochets `[[ ]]` est celle qui est recommandée et qu'il faut utiliser avec Bash. Pour en savoir plus, vous pouvez lire :
+La méthode avec les doubles crochets `[[ ]]` est celle qui est recommandée et qu'il faut utiliser avec Bash. Pour en savoir plus, vous pouvez lire :
 
 - [Bash test and comparison functions](https://www.ibm.com/developerworks/library/l-bash-test/index.html)
 - [Test Constructs](http://www.tldp.org/LDP/abs/html/testconstructs.html)
@@ -547,10 +578,10 @@ mais la méthode avec les doubles crochets `[[ ]]` est celle qui est recommandé
 
 #### Combinaisons de comparaison
 
-Enfin, on peut également combiner plusieurs comparaisons dans un test avec des opérateurs booléens :
+Enfin, on peut également combiner plusieurs comparaisons dans un même test avec des opérateurs booléens :
 
 | opérateur  | signification |
-|------------|---------------|
+|:----------:|---------------|
 | `&&`       | et            |
 | `!!`       | ou            |
 

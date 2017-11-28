@@ -343,7 +343,7 @@ elise
 total: 6
 ```
 
-Rappel : le symbole `\` indique une commande sur plusieurs lignes.
+Rappel : le symbole `\` en fin de ligne permet d'écrire une commande sur plusieurs lignes.
 
 ### Calcul
 
