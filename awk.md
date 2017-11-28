@@ -1,8 +1,9 @@
 ---
+title: Awk
 author:
     - Patrick Fuchs
     - Pierre Poulain
-title: Awk
+license: "Creative Commons Attribution - Partage à l’identique 3.0"
 ---
 
 # Awk
