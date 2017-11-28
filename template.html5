@@ -60,7 +60,7 @@ $body$
     Patrick Fuchs et Pierre Poulain, UFR des Sciences du Vivant, Université Paris Diderot - Paris 7, version du $date$
     <br />
     $if(license)$
-    $license$
+    Licence $license$
     $endif$
 </p>
 </footer>
