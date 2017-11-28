@@ -18,7 +18,7 @@ $(OUTDIR) :
 
 # | -> see order-only-prerequisites
 # https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html
-$(OUTDIR)/%.html : %.md template.html5 | $(OUTDIR)
+$(OUTDIR)/%.html : %.md template.html5 style.css | $(OUTDIR)
 	pandoc -o $@ \
 		-S \
 		--standalone \
