@@ -1,8 +1,9 @@
 ---
+title: Join
 author:
     - Patrick Fuchs
     - Pierre Poulain
-title: Join
+license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 ---
 
 # Join

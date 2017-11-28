@@ -3,7 +3,7 @@ title: Awk
 author:
     - Patrick Fuchs
     - Pierre Poulain
-license: "Creative Commons Attribution - Partage à l’identique 3.0"
+license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 ---
 
 # Awk
