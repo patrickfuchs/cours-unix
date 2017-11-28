@@ -107,7 +107,7 @@ export PATH=${PATH}:/my/new/dir
 ```
 
 
-### Noms de variables et caractères spéciaux
+### Noms de variables
 
 Les noms de variables peuvent contenir des lettres majuscules de `A` à `Z`, des lettres minuscules de `a` à `z`, des chiffres de `0` à `9` ainsi que les caractères `_`, `-` ou `.`.
 
