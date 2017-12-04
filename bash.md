@@ -693,3 +693,4 @@ Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts B
 
 [ShellCheck](https://www.shellcheck.net/) : un outil en ligne qui vérifie la qualité d'un script Bash et propose des conseils pour l'améliorer.
 
+[Writing Scripts](http://www.datacarpentry.org/shell-genomics/05-writing-scripts/) du tutoriel [Shell Genomics](http://www.datacarpentry.org/shell-genomics/) de [Data Carpentry](http://www.datacarpentry.org/).
