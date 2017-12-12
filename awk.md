@@ -189,7 +189,7 @@ $ awk '$1~/^ma/ && $2~/mo/' people.dat
 man     simon       175     33
 ```
 
-Exemple. Afficher les lignes pour lesquelles la première colonne débute par `ma` (expression régulière `^ma`) et la troisième colonne est supérieure à 180. Pour la troisième colonne, on ne compare pas d'expression régulière entre `\\` mais directement la valeur numérique.
+Exemple. Afficher les lignes pour lesquelles la première colonne débute par `ma` (expression régulière `^ma`) et la troisième colonne est supérieure à 180. Pour la troisième colonne, on ne compare pas d'expression régulière entre `/ /` mais directement la valeur numérique.
 
 ```
 $ awk '$1~/^ma/ && $3 > 180' people.dat
