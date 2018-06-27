@@ -12,7 +12,7 @@ L'objectif de ce TP est d'approfondir les compétences acquises précédemment p
 
 1. Téléchargez le fichier `people.dat` avec la commande :
     ```
-    wget 
+    wget https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/people.dat
     ```
 
 2. Déterminez combien de femmes sont listées dans le jeu de données.
