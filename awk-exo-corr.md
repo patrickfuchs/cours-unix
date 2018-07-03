@@ -18,7 +18,7 @@ Les réponses proposées ci-dessous ne sont que des éléments de correction. D'
 
 ### Nombre de femmes
 
-Combien de femmes sont listées dans le jeu de données ?
+Nombre de femmes sont présentes dans le jeu de données.
 
 1. Avec `grep` et `wc` :
     ```
@@ -48,7 +48,7 @@ Combien de femmes sont listées dans le jeu de données ?
 
 ### Nombre d'hommes
 
-Les hommes listés dans le jeu de données :
+Les hommes présents dans le jeu de données.
 1. Avec `grep` :
     ```
     $ grep "^man" people.dat
@@ -60,7 +60,7 @@ Les hommes listés dans le jeu de données :
     man     bob         186     33
     ```
 
-1. Avec `awk` et en cherchant sur la ligne entière :
+1. Avec `awk` et en filtrant sur la ligne entière :
     ```
     $ awk '/^man/' people.dat
     man     simon       175     33
@@ -71,7 +71,7 @@ Les hommes listés dans le jeu de données :
     man     bob         186     33
     ```
 
-1. Avec `awk` et en cherchant sur la première colonne uniquement :
+1. Avec `awk` et en filtrant sur la première colonne uniquement :
     ```
     $ awk '$1 ~ /^man/' people.dat
     man     simon       175     33
@@ -102,6 +102,7 @@ Les femmes :
     woman   morgane     174     31
     woman   mathilde    168     46
     ```
+    Remarque : l'expression régulière `^m.*e$` signifie que la colonne doit débuter par `m` puis contenir n'importe quel(s) caractère(s), puis se terminer par `e`.
 
 1. dont la 3e lettre du prénom est *l* :
     ```
@@ -198,7 +199,7 @@ $ mv mng2015_children_malaria_data.csv mng2015.csv
 
     Suivant votre système d'exploitation, vous pouvez obtenir `3,0917`. Aucune importance pour le moment mais gardez cela en tête pour la suite.
 
-1. Age moyen des patients ayant un profil hémoglobinique normal.
+1. Âge moyen des patients ayant un profil hémoglobinique normal.
 
     Il faut aller chercher dans le champ *hb_profile* (7e champ) qui contient le profil hémoglobinique des patients. Les patients avec profil hémoglobinique normal sont notés *AA*. Les patients avec un profil hémoglobinique drépanocytaire sont notés *AS*.
 
@@ -209,7 +210,7 @@ $ mv mng2015_children_malaria_data.csv mng2015.csv
 
     Suivant votre système d'exploitation, vous pouvez obtenir `3,12563`.
 
-1. Age moyen des patients ayant un profil hémoglobinique drépanocytaire (*sickle cell trait)*.
+1. Âge moyen des patients ayant un profil hémoglobinique drépanocytaire (*sickle cell trait)*.
 
     ```
     $ awk -F "," 'NR>1 && $7~/AS/ {age+=$3; count++} END {print "mean age:", age/count}' mng2015.csv
@@ -227,7 +228,7 @@ $ mv mng2015_children_malaria_data.csv mng2015.csv
 
 Le taux d'hémoglobine se trouve dans la colonne *hb_conc* (8e colonne).
 
-1. Taux d'hémoglobine moyen des patients ayant un profil hémoglobinique normal.
+1. Taux d'hémoglobine moyen des patients ayant un profil hémoglobinique normal (codé par `AA`).
 
     Sur ma machine, j'obtiens :
 
@@ -244,7 +245,7 @@ Le taux d'hémoglobine se trouve dans la colonne *hb_conc* (8e colonne).
 
     ce qui n'est pas du tout la valeur attendue.
 
-    On remarque par contre que la valeur décimale `10,8643` est exprimée avec le symbole **,** comme séparateur décimale alors que c'est le symbole **.** qui est utilisé dans le jeu de données.
+    On remarque par contre que la valeur décimale `10,8643` est exprimée avec le symbole `,` comme séparateur décimale alors que c'est le symbole `.` qui est utilisé dans le jeu de données.
 
     Ce problème est récurrent sur les systèmes informatiques configurés en français. Pour corriger cela, il suffit de déclarer au préalable la variable d'environnement `LC_NUMERIC=C` avec la commande :
 
@@ -261,9 +262,9 @@ Le taux d'hémoglobine se trouve dans la colonne *hb_conc* (8e colonne).
     mean hb: 11.3447
     ```
 
-    Restez toujours vigilants sur ce problème de séparateur décimal (`.` ou `,`).
+    :warning: Restez toujours vigilants sur ce problème de séparateur décimal (`.` ou `,`).
 
-1. Taux d'hémoglobine moyen des patients drépanocytaires.
+1. Taux d'hémoglobine moyen des patients drépanocytaires (codé par `AS`).
 
     ```
     $ awk -F "," 'NR>1 && $7~/AS/ {hb+=$8; count++} END {print "mean hb:", hb/count}' mng2015.csv

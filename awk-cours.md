@@ -8,14 +8,17 @@ license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 
 # Awk
 
-`awk` est une commande Unix qui permet de traiter des lignes de fichiers, lus en colonnes. Cela signifie que `awk` lit un fichier ligne par ligne mais peut filtrer et sélectionner des éléments sur la base de colonnes.
+`awk` est une outil Unix qui permet de traiter des lignes d'un fichier, lu en colonnes. Cela signifie que `awk` lit un fichier ligne par ligne mais peut filtrer et sélectionner des éléments sur la base de colonnes.
 
-`awk` s'utilise de la manière suivante : **`awk [options] 'filtres {actions}' fichier`**
+La syntaxe de `awk` est : **`awk [options] 'filtres {actions}' fichier`**
+- :warning: Les guillemets simples `'` sont très importants.
+- Les filtres sont optionnels. Par défaut, tout est sélectionné.
+- Les actions sont optionnelles. Par défaut, toute la ligne est affichée.
 
 
 ## Jeu de données
 
-Voici le jeu de données (`people.dat`) que nous allons utiliser par la suite :
+Voici le jeu de données (`people.dat`) que nous allons utiliser par la suite et que vous pouvez télécharger [ici](https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/people.dat).
 
 ```
 man     simon       175     33
@@ -32,7 +35,7 @@ man     bob         186     33
 woman   elise       159     63
 ```
 
-Ce jeu de données contient les caractères d'un certain nombre d'individus :
+Ce jeu de données contient les caractéristiques d'un certain nombre d'individus :
 
 - La première colonne contient le sexe de la personne (`man` ou `woman`).
 - La deuxième colonne contient le prénom.
@@ -44,9 +47,11 @@ Ce jeu de données contient les caractères d'un certain nombre d'individus :
 
 ### Sélection par expression régulière
 
-Une expression régulière est une combinaison de caractères et de métacaractères (caractères ayant une signification spéciale) utilisée pour filtre une chaîne de caractères. En anglais, une expression régulière se dit *regular expression* ou *regex*.
+Une expression régulière est une combinaison de caractères et de métacaractères (caractères ayant une signification spéciale) utilisée pour filtrer une chaîne de caractères cible. En anglais, une expression régulière se dit *regular expression* ou *regex*.
 
-Avec `awk`, l'utilisation générale est de la forme : `awk '/regex/' fichier`
+Avec `awk`, une utilisation des expressions régulières est de la forme : `awk '/regex/ {actions}' fichier`
+
+On rappelle que les `{actions}` que nous verrons par la suite sont optionnelles. On peut donc écrire directement `awk '/regex/' fichier`
 
 On effectue un test avec l'expression régulière sur chaque ligne et on affiche la ligne si le test est vérifié. La notion de colonne n'a pas encore d'importance ici. Par exemple, on cherche dans le jeu de données le mot clef `woman` et on affiche les lignes qui le contiennent :
 
@@ -60,9 +65,9 @@ woman   mathilde    168     46
 woman   elise       159     63
 ```
 
-L'expression régulière se met entre `/ /`.
+Remarquez l'expression régulière `woman` qui se met entre `/ /`.
 
-Par exemple, pour afficher les lignes qui contiennent le caractère `i` puis n'importe quel caractère (`..`) deux fois puis le caractère `e` :
+Par exemple, pour afficher les lignes qui contiennent le caractère `i` puis n'importe quel caractère deux fois (`..`) puis le caractère `e` :
 
 ```
 $ awk '/i..e/' people.dat
@@ -71,7 +76,6 @@ woman   mathilde    168     46
 ```
 
 Remarque : dans une expression régulière, le métacaractère `.` correspond à n'importe quel caractère.
-
 
 Voici un autre exemple qui affiche les lignes qui contiennent le caractère `s` suivi du caractère `i` ou `e` (les caractères `i` et `e` sont alors entre crochets) :
 
@@ -103,7 +107,7 @@ man     bob         186     33
 woman   elise       159     63
 ```
 
-Dans l'exemple ci-dessus, l'expression régulière `an` est présente dans la 1re et la Eé colonne.
+Dans l'exemple ci-dessus, l'expression régulière `an` est présente dans la 1re et la 2e colonne.
 
 On peut alors demander à `awk` de vérifier l'expression régulière sur une colonne en particulier (ici la 2e) :
 
@@ -112,7 +116,6 @@ $ awk '$2~/an/' people.dat
 woman   morgane     174     31
 woman   jeanne      172     56
 ```
-
 
 `awk` numérote automatique les colonnes de `$1` la première colonne à `$n` la n-ième colonne. La notation `$0` désigne toutes les colonnes (donc la ligne entière).
 
@@ -133,7 +136,7 @@ $0 -- woman   elise       159     63
       $1      $2          $3      $4
 ```
 
-Exemple. Afficher les lignes pour lesquelles la seconde colonne débute par la lettre `p`. Le métacaractère `^` est utilisé pour désigner le début de la colonne.
+Exemple. Afficher les lignes pour lesquelles la seconde colonne débute par la lettre `p`. Le métacaractère `^` est utilisé pour indiquer le début de la colonne.
 
 ```
 $ awk '$2~/^p/' people.dat
@@ -227,9 +230,9 @@ woman   elise       159     63
 
 ## Actions
 
-Pour mémoire, la syntaxe générale de `awk` est : **`awk [options] 'tests {actions}' fichier`**
+Pour mémoire, la syntaxe générale de `awk` est : **`awk [options] 'filtres {actions}' fichier`**
 
-On peut indiquer à `awk` de faire plusieurs actions entre `{ }`. La plus utilisée étant l'affichage avec `print`.
+L'action la plus courante avec `awk` est l'affichage avec la commande `print`.
 
 Exemple. Afficher la deuxième colonne des lignes qui contiennent le mot `woman` :
 
@@ -260,6 +263,7 @@ prenom : elise
 
 `awk` fournit automatiquement un certain nombre de variables prédéfinies :
 
+
 ### Nombre de champs (colonnes) `NF`
 
 ```
@@ -269,6 +273,7 @@ $ awk '/paul/ {print NF}' people.dat
 
 ### Numéro de ligne `NR`
 
+La première ligne du fichier porte le numéro 1.
 ```
 $ awk 'NR>3 && NR<=5 {print $2}' people.dat
 morgane
@@ -380,9 +385,10 @@ total: 6
 mean age: 46.3333
 ```
 
+
 # Script
 
-Lorsque les instructions `awk` deviennent trop nombreuses, il est plus partique d'écrire un script dédié.
+Lorsque les instructions `awk` deviennent trop nombreuses, il est plus pratique d'écrire un script dédié.
 
 Exemple . Calculer et afficher l'âge moyen des femmes et afficher le nombre de femmes.
 
@@ -408,7 +414,7 @@ print "mean age:", age/count
 
 Les blocs d'instructions sont ainsi plus lisibles. Le retour à la ligne suffit à séparer plusieurs actions (pas besoin de `;`).
 
-Ce script s'utilise en appelant `awk` avec l'option `-f` de cette manière :
+Ce script s'utilise en appelant `awk` avec l'option `-f` :
 
 ```
 $ awk -f mean_age_women.awk people.dat
@@ -419,13 +425,13 @@ mean age: 46.3333
 
 # Séparateur de champ : option -F
 
-Par défaut, `awk` suppose que les différentes colonnes (les différents champs) des fichiers d'entrée sont séparées par des espaces ou des tabulations (1 ou plusieurs.)
+Par défaut, `awk` suppose que les différentes colonnes (les différents champs) du fichier d'entrée sont séparées par des espaces ou des tabulations (une ou plusieurs.)
 
 L'option `-F` (à ne pas confondre avec `-f`) définit le caractère qui sépare les différentes colonnes entre elles.
 
 Dans notre exemple `people.dat`, les différentes colonnes sont séparées par des espaces (séparateur par défaut de `awk`).
 
-Pour le vérifier, on peut demander à `awk` d'afficher le nombre de champs trouvés pour la première ligne uniquement :
+Pour le vérifier, on peut demander à `awk` d'afficher le nombre de colonnes trouvées pour la première ligne uniquement :
 
 ```
 $ awk 'NR==1 {print NF}' people.dat
@@ -439,7 +445,7 @@ $ awk -F "," 'NR==1 {print NF}' people.dat
 1
 ```
 
-Dans un fichier au format [*tabulation-separated values*](https://fr.wikipedia.org/wiki/Tabulation-separated_values) (`.tsv`), les différentes colonnes sont séparées par le caractère tabulation. Par exemple, dans le fichier `people.tsv` :
+Dans un fichier au format [*tabulation-separated values*](https://fr.wikipedia.org/wiki/Tabulation-separated_values) (`.tsv`), les différentes colonnes sont séparées par le caractère tabulation. Par exemple, dans le fichier `people.tsv` que vous pouvez télécharger [ici](https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/people.tsv).
 
 ```
 man	simon	175	33
@@ -466,7 +472,7 @@ $ awk 'NR==1 {print NF}' people.tsv
 ```
 
 
-Par contre, dans un fichier au format [*comma-separated values*](https://fr.wikipedia.org/wiki/Comma-separated_values) (`.csv`), les différents champs sont séparés par une virgule. Par exemple, dans le fichier `people.csv` :
+Par contre, dans un fichier au format [*comma-separated values*](https://fr.wikipedia.org/wiki/Comma-separated_values) (`.csv`), les différents champs sont séparés par une virgule. Par exemple, dans le fichier `people.csv` que vous pouvez télécharger [ici](https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/people.csv).
 
 ```
 man,simon,175,33

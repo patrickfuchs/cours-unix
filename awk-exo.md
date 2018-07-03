@@ -137,7 +137,7 @@ En utilisant les outils `awk` et `wc`, déterminez :
 En utilisant `awk` uniquement, déterminez :
 
 1. L'âge moyen de tous les patients.
-1. L'âge moyen des patients ayant un profil hémoglobinique normal (colonne *hb_profile* avec le profile *normal hemoglobin*).
+1. L'âge moyen des patients ayant un profil hémoglobinique normal (colonne *hb_profile* avec le profile *normal hemoglobin*). Attention, utilisez le *codebook* pour savoir comment est représentée l'information *hb_profile*.
 1. L'âge moyen des patients ayant un profil hémoglobinique drépanocytaire (colonne *hb_profile* avec le profile *sickle cell trait*).
 1. Comparez vos résultats avec ceux de l'article scientifique dont sont tirées ces données.
 
@@ -146,8 +146,8 @@ En utilisant `awk` uniquement, déterminez :
 
 En utilisant `awk` uniquement, déterminez :
 
-1. Le taux d'hémoglobine moyen des patients ayant un profil hémoglobinique normal.
-1. Le taux d'hémoglobine moyen des patients drépanocytaires.
+1. Le taux d'hémoglobine (colonne *hb_conc*) moyen des patients ayant un profil hémoglobinique normal.
+1. Le taux d'hémoglobine (colonne *hb_conc*) moyen des patients drépanocytaires.
 1. Comparez vos résultats avec ceux de l'article scientifique dont sont tirées ces données.
 
 
@@ -155,6 +155,6 @@ En utilisant `awk` uniquement, déterminez :
 
 En utilisant `awk` uniquement, déterminez :
 
-1. La température moyenne des patients ayant un paludisme diagnostiqué par microscopie (colonne *malaria* correspondante à *malaria diagnosed by microscopy*).
-1. La température moyenne des patients ayant un paludisme diagnostiqué par *polymerase chain reaction* (colonne *malaria* correspondante à *malaria diagnosed by PCR*).
+1. La température (colonne *temp*) moyenne des patients ayant un paludisme diagnostiqué par microscopie (colonne *malaria* correspondante à *malaria diagnosed by microscopy*). Attention, utilisez le *codebook* pour savoir comment est représentée l'information *malaria*.
+1. La température (colonne *temp*) moyenne des patients ayant un paludisme diagnostiqué par *polymerase chain reaction* (colonne *malaria* correspondante à *malaria diagnosed by PCR*).
 1. Comparez vos résultats avec ceux de l'article scientifique dont sont tirées ces données.
