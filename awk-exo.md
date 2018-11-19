@@ -20,6 +20,11 @@ Téléchargez le fichier `people.dat` avec la commande :
 wget https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/people.dat
 ```
 
+*Remarque.* Si la commande `wget` n'est pas disponible sur votre machine, essayez d'utiliser la commande `curl` :
+```
+curl https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/people.dat -o people.dat
+```
+
 ## Analyses
 
 
