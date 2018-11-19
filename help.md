@@ -119,6 +119,6 @@ La plus importante est sans doute qu'il faut être capable d'expliquer clairemen
 Le site [explainshell](https://explainshell.com/), comme son nom l'indique va
 détailler les options d'une commande Unix.
 
-Voici un exemple pour la commande `tar xzvf archive.tar.gz` :
+Voici un [exemple](https://explainshell.com/explain?cmd=tar%20xzvf%20archive.tar.gz) pour la commande `tar xzvf archive.tar.gz` :
 
 ![](img/explainshell.png)
