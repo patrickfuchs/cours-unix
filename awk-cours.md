@@ -196,26 +196,26 @@ Combinaison de plusieurs comparaisons :
 | &&        | et            |
 | &#921;&#921;     | ou            |
 
-Exemple. Afficher les lignes pour lesquelles la première colonne débute par `ma` (expression régulière `^ma`) et la deuxième colonne contient `mo`.
+Exemple. Afficher les lignes pour lesquelles la première colonne débute par `m` (expression régulière `^m`) et la deuxième colonne contient `mo`.
 
 ```
-$ awk '$1~/^ma/ && $2~/mo/' people.dat
+$ awk '$1~/^m/ && $2~/mo/' people.dat
 man     simon       175     33
 ```
 
-Exemple. Afficher les lignes pour lesquelles la première colonne débute par `ma` (expression régulière `^ma`) et la troisième colonne est supérieure à 180. Pour la troisième colonne, on ne compare pas d'expression régulière entre `/ /` mais directement la valeur numérique.
+Exemple. Afficher les lignes pour lesquelles la première colonne débute par `m` (expression régulière `^m`) et la troisième colonne est supérieure à 180. Pour la troisième colonne, on ne compare pas d'expression régulière entre `/ /` mais directement la valeur numérique.
 
 ```
-$ awk '$1~/^ma/ && $3 > 180' people.dat
+$ awk '$1~/^m/ && $3 > 180' people.dat
 man     serge       181     44
 man     paul        185     29
 man     bob         186     33
 ```
 
-Exemple. Afficher les lignes pour lesquelles la première colonne débute par `ma` (expression régulière `^ma`) et la quatrième colonne est égale à 33.
+Exemple. Afficher les lignes pour lesquelles la première colonne débute par `m` (expression régulière `^m`) et la quatrième colonne est égale à 33.
 
 ```
-$ awk '$1~/^ma/ && $4 == 33' people.dat
+$ awk '$1~/^m/ && $4 == 33' people.dat
 man     simon       175     33
 man     bob         186     33
 ```
