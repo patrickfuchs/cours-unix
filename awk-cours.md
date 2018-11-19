@@ -8,9 +8,12 @@ license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 
 # Awk
 
-`awk` est une outil Unix qui permet de traiter des lignes d'un fichier, lu en colonnes. Cela signifie que `awk` lit un fichier ligne par ligne mais peut filtrer et sélectionner des éléments sur la base de colonnes.
+`awk` est une outil Unix qui permet de traiter les lignes d'un fichier, lu en colonnes. Cela signifie que `awk` lit un fichier ligne par ligne mais peut filtrer et sélectionner des éléments sur la base de colonnes.
 
-La syntaxe de `awk` est : **`awk [options] 'filtres {actions}' fichier`**
+La syntaxe de `awk` est :
+
+**`awk [options] 'filtres {actions}' fichier`**
+
 - :warning: Les guillemets simples `'` sont très importants.
 - Les filtres sont optionnels. Par défaut, tout est sélectionné.
 - Les actions sont optionnelles. Par défaut, toute la ligne est affichée.
@@ -24,7 +27,7 @@ Voici le jeu de données (`people.dat`) que nous allons utiliser par la suite et
 man     simon       175     33
 woman   clara       167     45
 man     serge       181     44
-woman   morgane     174     31
+woman   claire      174     31
 man     patrick     172     52
 woman   julie       168     37
 man     paul        185     29
@@ -58,7 +61,7 @@ On effectue un test avec l'expression régulière sur chaque ligne et on affiche
 ```
 $ awk '/woman/' people.dat
 woman   clara       167     45
-woman   morgane     174     31
+woman   claire      174     31
 woman   julie       168     37
 woman   jeanne      172     56
 woman   mathilde    168     46
@@ -96,7 +99,7 @@ $ awk '/an/' people.dat
 man     simon       175     33
 woman   clara       167     45
 man     serge       181     44
-woman   morgane     174     31
+woman   claire      174     31
 man     patrick     172     52
 woman   julie       168     37
 man     paul        185     29
@@ -113,7 +116,6 @@ On peut alors demander à `awk` de vérifier l'expression régulière sur une co
 
 ```
 $ awk '$2~/an/' people.dat
-woman   morgane     174     31
 woman   jeanne      172     56
 ```
 
@@ -123,7 +125,7 @@ woman   jeanne      172     56
       man     simon       175     33
       woman   clara       167     45
       man     serge       181     44
-      woman   morgane     174     31
+      woman   claire      174     31
       man     patrick     172     52
       woman   julie       168     37
       man     paul        185     29
@@ -239,7 +241,7 @@ Exemple. Afficher la deuxième colonne des lignes qui contiennent le mot `woman`
 ```
 awk '/woman/ {print $2}' people.dat
 clara
-morgane
+claire
 julie
 jeanne
 mathilde
@@ -251,7 +253,7 @@ Même chose, précédée de la chaîne de caractères `prenom :` :
 ```
 $ awk '/woman/ {print "prenom :", $2}' people.dat
 prenom : clara
-prenom : morgane
+prenom : claire
 prenom : julie
 prenom : jeanne
 prenom : mathilde
@@ -276,7 +278,7 @@ $ awk '/paul/ {print NF}' people.dat
 La première ligne du fichier porte le numéro 1.
 ```
 $ awk 'NR>3 && NR<=5 {print $2}' people.dat
-morgane
+claire
 patrick
 ```
 
@@ -285,7 +287,7 @@ Exemple. Afficher les lignes paires :
 ```
 $ awk 'NR%2==0 {print $2}' people.dat
 clara
-morgane
+claire
 julie
 jeanne
 mathilde
@@ -300,7 +302,7 @@ Remarque : l'opérateur modulo `%` renvoie le reste de la division entière. Ain
 ```
 $ awk '/woman/ {a=a+1; print a, $2}' people.dat
 1 clara
-2 morgane
+2 claire
 3 julie
 4 jeanne
 5 mathilde
@@ -311,12 +313,12 @@ Dans cet exemple, la variable `a` n'existe pas a priori. Lorsque `awk` veut l'ut
 
 Dans `awk`, deux actions sont séparées par le caractère `;`.
 
-L'expression `a=a+1` est équivalente à `a++`, qui présente l'avantage d'être plus comptacte :
+L'expression `a=a+1` est équivalente à `a++`, qui présente l'avantage d'être plus compacte :
 
 ```
 $ awk '/woman/ {a++; print a, $2}' people.dat
 1 clara
-2 morgane
+2 claire
 3 julie
 4 jeanne
 5 mathilde
@@ -333,7 +335,7 @@ Exemple. Afficher la 2e colonne lorsque les lignes contiennent `woman`, puis le 
 ```
 $ awk '/woman/ {a++; print $2} END {print "total:", a }' people.dat
 clara
-morgane
+claire
 julie
 jeanne
 mathilde
@@ -355,7 +357,7 @@ $ awk 'BEGIN {print "women found:"} \
 END {print "total:", a }' people.dat
 women found:
 clara
-morgane
+claire
 julie
 jeanne
 mathilde
@@ -451,7 +453,7 @@ Dans un fichier au format [*tabulation-separated values*](https://fr.wikipedia.o
 man	simon	175	33
 woman	clara	167	45
 man	serge	181	44
-woman	morgane	174	31
+woman	claire	174	31
 man	patrick	172	52
 woman	julie	168	37
 man	paul	185	29
@@ -478,7 +480,7 @@ Par contre, dans un fichier au format [*comma-separated values*](https://fr.wiki
 man,simon,175,33
 woman,clara,167,45
 man,serge,181,44
-woman,morgane,174,31
+woman,claire,174,31
 man,patrick,172,52
 woman,julie,168,37
 man,paul,185,29
@@ -510,7 +512,7 @@ prenom :
 prenom :
 $ awk -F "," '/woman/ {print "prenom :", $2}' people.csv
 prenom : clara
-prenom : morgane
+prenom : claire
 prenom : julie
 prenom : jeanne
 prenom : mathilde

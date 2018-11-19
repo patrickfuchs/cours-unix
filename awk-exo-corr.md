@@ -89,7 +89,7 @@ Les femmes :
 1. dont le prénom se termine par la lettre *e* :
     ```
     $ awk '/woman/ && $2 ~ /e$/' people.dat
-    woman   morgane     174     31
+    woman   claire     174     31
     woman   julie       168     37
     woman   jeanne      172     56
     woman   mathilde    168     46
@@ -99,7 +99,6 @@ Les femmes :
 1. dont le prénom se termine par la lettre *e* et débute par la lettre *m* :
     ```
     $ awk '/woman/ && $2 ~ /^m.*e$/' people.dat
-    woman   morgane     174     31
     woman   mathilde    168     46
     ```
     Remarque : l'expression régulière `^m.*e$` signifie que la colonne doit débuter par `m` puis contenir n'importe quel(s) caractère(s), puis se terminer par `e`.
@@ -120,7 +119,7 @@ Les personnes :
     ```
     $ awk '$2 ~ /e$/ && $3>170' people.dat
     man     serge       181     44
-    woman   morgane     174     31
+    woman   claire      174     31
     woman   jeanne      172     56
     man     baptiste    178     39
     ```
@@ -129,7 +128,7 @@ Les personnes :
 
     ```
     $ awk '$2 ~ /e$/ && $3>170 && $4<40' people.dat
-    woman   morgane     174     31
+    woman   claire      174     31
     man     baptiste    178     39
     ```
 
