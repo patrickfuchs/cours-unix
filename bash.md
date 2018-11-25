@@ -15,7 +15,7 @@ Dans ce qui suit, l'invite du *shell* sera représentée par le symbole `$` en d
 
 ## Variables et variables d'environnement
 
-En Bash, il est possible de définir un certain nombre d'objets, qui vont contenir de l'information et résidés dans la mémoire du *shell*.
+En Bash, il est possible de définir un certain nombre d'objets, qui vont contenir de l'information et résider dans la mémoire du *shell*.
 
 
 ### Variables locales
