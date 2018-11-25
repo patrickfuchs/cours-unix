@@ -22,7 +22,7 @@ En Bash, il est possible de définir un certain nombre d'objets, qui vont conten
 
 Les variables locales ne sont pas transmises au processus fils.
 
-Par convention, elles sont écrites en minuscules. Par exemple : 
+Par convention, elles sont écrites en minuscules. Par exemple :
 
 ```
 $ a=1
@@ -44,7 +44,7 @@ ma chaîne de caractères
 
 Attention à ne pas confondre l'invite du *shell* en début de ligne `$` avec l'appel de la variable avec `$var`.
 
-Lors de l'utilisation d'une variable, il est fortement recommandé d'entourer son nom pas des accolades `{ }`. Par exemple : 
+Lors de l'utilisation d'une variable, il est fortement recommandé d'entourer son nom pas des accolades `{ }`. Par exemple :
 
 ```
 $ a=1
@@ -60,7 +60,7 @@ ma chain
 
 Les variables d'environnement sont transmises au processus fils. Par convention, elles s'écrivent en majuscules. Elles sont déclarées comme variables d'environnement avec la commande `export`.
 
-Exemple : 
+Exemple :
 
 ```
 $ export PROSPER='Youplaboum'
@@ -83,13 +83,15 @@ Voici quelques variables d'environnement d'intérêt :
 
 La commande `env` affiche toutes les variables d'environnement.
 
-Au Script, la connexion internet se fait via un [proxy](https://fr.wikipedia.org/wiki/Proxy). Pour l'utiliser, il faut définir quelques variables d'environnement : 
+Au Script, la connexion internet se fait via un [proxy](https://fr.wikipedia.org/wiki/Proxy). Pour l'utiliser, il faut définir quelques variables d'environnement :
 
 ```
 export http_proxy=http://www-cache.script.univ-paris-diderot.fr:3128/
 export https_proxy=http://www-cache.script.univ-paris-diderot.fr:3128/
 export ftp_proxy=http://www-cache.script.univ-paris-diderot.fr:3128/
 ```
+
+On notera qu'ici, exceptionnellement, ces variables d'environnement sont écrites en minuscules.
 
 
 ### Configuration du *shell* Bash
@@ -258,12 +260,12 @@ echo "Troisième argument : $3"
 Si on utilise maintenant `arg.sh` avec deux arguments (`toto` et `titi`) :
 
 ```
-$ ./test.sh toto titi 
+$ ./test.sh toto titi
 Nombre d'arguments : 2
 Tous les arguments : toto titi
 Premier argument : toto
 Deuxième argument : titi
-Troisième argument : 
+Troisième argument :
 ```
 
 On remarque que l'affichage du troisième argument, qui pourtant n'existe pas, ne pose pas de problème à Bash. Par défaut, si une variable est appelée alors qu'elle n'a pas été définie au préalable, sa valeur est une chaîne de caractères vide.
@@ -285,7 +287,7 @@ Il est possible de stocker le résultat d'une commande dans une variable :
 
 ```
 $ nombre_femmes=$(awk '/woman/' people.dat | wc -l)
-$ echo ${nombre_femmes} 
+$ echo ${nombre_femmes}
 6
 ```
 
@@ -293,7 +295,7 @@ On peut utiliser également les caractères `` ` `` :
 
 ```
 $ nombre_femmes=`awk '/woman/' people.dat | wc -l`
-$ echo ${nombre_femmes} 
+$ echo ${nombre_femmes}
 6
 ```
 
@@ -325,15 +327,15 @@ echo 'User ${USER} is working on computer ${HOSTNAME}'
 On le rend exécutable avant la première utilisation :
 
 ```
-$ chmod +x var.sh 
-$ ls -l var.sh 
+$ chmod +x var.sh
+$ ls -l var.sh
 -rwxrwxr-x 1 pierre pierre 301 nov.  22 15:03 var.sh*
 ```
 
-Puis on l'exécute : 
+Puis on l'exécute :
 
 ```
-$ ./var.sh 
+$ ./var.sh
 123
 Test for bash script
 people.dat
@@ -393,7 +395,7 @@ do
 done
 ```
 
-Les actions à réaliser pour chacun des éléments de la boucle sont entre les mot-clefs `do` et `done`. Ici, il n'y a qu'une action `echo ${fruit}`, c'est-à-dire l'affichage du contenu de la variable `fruit`. 
+Les actions à réaliser pour chacun des éléments de la boucle sont entre les mot-clefs `do` et `done`. Ici, il n'y a qu'une action `echo ${fruit}`, c'est-à-dire l'affichage du contenu de la variable `fruit`.
 
 L'indentation -- le retrait à droite -- des actions à réaliser dans la boucle n'est pas obligatoire mais facilite la lecture de la boucle.
 
@@ -425,7 +427,7 @@ for i in $(cat fichier) ; do echo $i ; done
 
 ### Test
 
-Les tests sont très utiles pour prendre des décisions. 
+Les tests sont très utiles pour prendre des décisions.
 
 #### Structure
 
@@ -433,7 +435,7 @@ Voici un premier test simple :
 
 ```
 if free -h | grep Mem
-then 
+then
     echo "Calcul de la mémoire vive : OK"
 fi
 ```
@@ -491,7 +493,7 @@ Opérateurs pour des fichiers :
 | `-w`       | le fichier existe et est modifiable par l'utilisateur |
 | `-x`       | le fichier existe et est exécutable par l'utilisateur |
 
-L'opérateur `!` est un peu particulier car c'est l'opérateur de négation. 
+L'opérateur `!` est un peu particulier car c'est l'opérateur de négation.
 
 Voici un premier exemple avec une comparaison de nombres entiers :
 
@@ -616,7 +618,7 @@ done
 Si on enregistre cet exemple dans le script `while.sh` et qu'on l'exécute ensuite, on obtient :
 
 ```
-$ ./while.sh 
+$ ./while.sh
 nombre vaut 1
 nombre vaut 2
 nombre vaut 3
@@ -658,8 +660,8 @@ done
 On rend exécutable ce script avec la commande `chmod`, puis on le lance :
 
 ```
-$ chmod +x exit.sh 
-$ ./exit.sh 
+$ chmod +x exit.sh
+$ ./exit.sh
 nombre vaut 1
 nombre vaut 2
 nombre vaut 3
@@ -673,12 +675,12 @@ Quand la variable `nombre` atteint la valeur 3, le test `[[ ${nombre} -eq 3 ]]` 
 
 > Programs must be written for people to read, and only incidentally for machines to execute.
 
--- [Harold Abelsen](https://fr.wikipedia.org/wiki/Hal_Abelson), *Structure and Interpretation of Computer Programs*, The MIT Press, 1996, préface de la première édition. 
+-- [Harold Abelsen](https://fr.wikipedia.org/wiki/Hal_Abelson), *Structure and Interpretation of Computer Programs*, The MIT Press, 1996, préface de la première édition.
 
 H. Abelsen est informaticien et un membre fondateur des Creatives Commons et de la Free Software Foundation.
 
 
-Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts Bash clairs et lisibles. Pour cela, vos programmes et scripts doivent contenir : 
+Nous vous conseillons fortement de suivre ce principe et de rendre vos scripts Bash clairs et lisibles. Pour cela, vos programmes et scripts doivent contenir :
 
 - des commentaires précis et informatifs ;
 - des noms de variables qui ont du sens ;
