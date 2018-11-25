@@ -266,14 +266,14 @@ prenom : elise
 `awk` fournit automatiquement un certain nombre de variables prédéfinies :
 
 
-### Nombre de champs (colonnes) `NF`
+### Nombre de champs (colonnes) : `NF`
 
 ```
 $ awk '/paul/ {print NF}' people.dat
 4
 ```
 
-### Numéro de ligne `NR`
+### Numéro de ligne : `NR`
 
 La première ligne du fichier porte le numéro 1.
 ```
