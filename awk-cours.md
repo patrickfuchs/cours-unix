@@ -367,7 +367,7 @@ total: 6
 
 Remarque : le symbole `\` en fin de ligne permet d'écrire une commande sur plusieurs lignes.
 
-### Calcul
+Et deux derniers exemples pour terminer :
 
 Calculer et afficher l'âge moyen des femmes :
 
@@ -394,7 +394,7 @@ Lorsque les instructions `awk` deviennent trop nombreuses, il est plus pratique 
 
 Exemple . Calculer et afficher l'âge moyen des femmes et afficher le nombre de femmes.
 
-Les instructions `awk` sont dans le fichier `mean_age_women.awk` :
+Les instructions `awk` sont dans le fichier `mean_age_women.awk` (téléchargeable [ici](https://raw.githubusercontent.com/patrickfuchs/cours-unix/master/files/awk/mean_age_women.awk)) :
 
 ```
 BEGIN {
