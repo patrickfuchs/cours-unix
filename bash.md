@@ -1,12 +1,12 @@
 ---
-title: Bash
+title: Programmation Bash
 author:
     - Patrick Fuchs
     - Pierre Poulain
 license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 ---
 
-# Bash
+# Programmation Bash
 
 Bash est un interpréteur de ligne de commande (*shell*) utilisé sur des systèmes Unix / Linux. C'est un des *shells* les plus utilisés sous Linux.
 
