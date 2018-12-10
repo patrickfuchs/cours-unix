@@ -9,7 +9,12 @@ license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 
 # Sommes de contrôle - exercices
 
-L'objectif de ce TP est de découvrir les commandes `md5sum` et `sha256sum`.
+L'objectif de ce TP est de découvrir le fonctionnement et l’utilité des commandes `md5sum` et `sha256sum`.
+
+**Remarque :** avec un système d'exploitation Mac OS X, 
+
+- l'équivalent de la commande `md5sum` est `md5`
+- et l'équivalent de la commande `sha256sum` est `shasum -a 256` .
 
 
 ## MD5

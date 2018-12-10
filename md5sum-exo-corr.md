@@ -11,6 +11,11 @@ license: "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0"
 
 Les réponses proposées ci-dessous ne sont que des éléments de correction. D'autres solutions alternatives sont parfaitement possibles.
 
+**Remarque :** avec un système d'exploitation Mac OS X,
+
+- l'équivalent de la commande `md5sum` est `md5`
+- et l'équivalent de la commande `sha256sum` est `shasum -a 256` .
+
 ## MD5
 
 1. Retour dans le répertoire utilisateur (au cas où on serait ailleurs) :
