@@ -585,7 +585,7 @@ Enfin, on peut également combiner plusieurs comparaisons dans un même test ave
 | opérateur  | signification |
 |:----------:|---------------|
 | `&&`       | et            |
-| `!!`       | ou            |
+| `||`       | ou            |
 
 
 Exemple :
