@@ -109,13 +109,22 @@ export DISPLAY=localhost:0.0
 etc.
 
 - Exemple: copier "fichier" du bureau Windows vers le répertoire courant de WSL (ici l'utilisateur sous Windows s'appelle "NomUserWindows")
-```cp /mnt/c/Users/NomUserWindows/Desktop/fichier .```
+
+```
+cp /mnt/c/Users/NomUserWindows/Desktop/fichier .
+```
 
 - Exemple: copier "fichier" depuis le dossier Downloads de Windows dans le répertoire courant de WSL (parfois appelé Téléchargements)
-```cp /mnt/c/Users/Pat/Downloads/fichier .```
+
+```
+cp /mnt/c/Users/Pat/Downloads/fichier .
+```
 
 - Exemple: copie de "fichier" dans WSL vers Windows (à la racine du disque D:)
-```cp fichier /mnt/d/fichier .```
+
+```
+cp fichier /mnt/d/fichier .
+```
 
 
 ## V) Voir WSL dans Windows
@@ -135,7 +144,7 @@ Sur les versions récentes de WSL, on peut mettre dans la barre d'adresse de l'e
 \\wsl$
 ```
 
---> Cela fait arriver dans le `/` du WSL.
+--> Cela vous fait arriver dans le `/` du WSL.
 
 Si vous ouvrez un répertoire WSL avec l'explorateur Windows, vous pouvez par exemple ouvrir un pdf ou un fichier texte en lecture seule. Mais surtout ne glissez pas d'icône dans ce répertoire WSL !!! 
 
