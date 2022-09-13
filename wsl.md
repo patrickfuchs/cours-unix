@@ -17,13 +17,15 @@ Dans cette page sont décrits les diverses opérations que j'ai pu noter pour  l
 - En dernier recours (car plus technique !):
 [Documentation officielle de Microsoft](https://docs.microsoft.com/fr-fr/windows/wsl/)
 
-- Note pour les utilisateurs de Windows 11. Certains utilisateurs m'ont fait remonter le problème suivant lors de l'installation depuis le Microsoft Store :
+- Note pour les utilisateurs de Windows 11. Certaines perspnnes m'ont fait remonter le problème suivant lors de l'installation depuis le Microsoft Store :
 
-![](img/pb_install_WSL_Win11.png){ width=40% }
+![Problème avec Windows 11](img/pb_install_WSL_Win11.png){width=40%}
 
 Pour remédier à cela, il faut apparemment activer la "Virtual Machine Platform" comme expliqué dans cette [page](https://www.configserverfirewall.com/windows-10/please-enable-the-virtual-machine-platform-windows-feature-and-ensure-virtualization-is-enabled-in-the-bios/)
 
-- Une fois installé, tapez "bash" dans la barre Windows. Cliquez sur le lien. Vous devriez avoir un shell bash WSL. Toutefois vous constaterez avec "pwd" qu'il ouvre ce shell dans le répertoire "/mnt/c/WINDOWS/system32"
+Il se peut aussi que vous ayez à installer des packages supplémentaires si vous optez pour WSL2 comme décrit dans cette [page](https://docs.microsoft.com/fr-fr/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package).
+
+- Une fois WSL installé, tapez "bash" dans la barre Windows. Cliquez sur le lien. Vous devriez avoir un shell bash WSL. Toutefois vous constaterez avec "pwd" qu'il ouvre ce shell dans le répertoire "/mnt/c/WINDOWS/system32"
 
 - Pour faire en sorte d'arriver dans votre répertoire utilisateur /home/user (où user est votre nom d'utilisateur sous WSL), quand le bash est ouvert épingler le dans votre barre Windows. Une fois épinglé, faites un clic droit sur l'icône, puis faite un clic droit "Lanceur Bash Microsoft", cliquer sur "propriétés". Dans l'onglet Raccourci, modifier la ligne "C:\Windows\System32\bash.exe" par "C:\Windows\System32\bash.exe ~".
 
