@@ -19,7 +19,7 @@ Dans cette page sont décrits les diverses opérations que j'ai pu noter pour  l
 
 - Note pour les utilisateurs de Windows 11. Certains utilisateurs m'ont fait remonter le problème suivant lors de l'installation depuis le Microsoft Store :
 
-![](img/pb_install_WSL_Win11.png)
+![](img/pb_install_WSL_Win11.png){ width=40% }
 
 Pour remédier à cela, il faut apparemment activer la "Virtual Machine Platform" comme expliqué dans cette [page](https://www.configserverfirewall.com/windows-10/please-enable-the-virtual-machine-platform-windows-feature-and-ensure-virtualization-is-enabled-in-the-bios/)
 
