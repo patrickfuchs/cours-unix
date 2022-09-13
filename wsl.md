@@ -6,18 +6,18 @@ Dans cette page sont décrits les diverses opérations que j'ai pu noter pour  l
 
 ## I) Installation de WSL
 
-- Une Vidéo très bien faite :
+Une Vidéo très bien faite :
 [Installer le shell Bash Linux sous Windows 10 avec WSL (2020)](https://www.youtube.com/watch?v=CyG16N3GJWo)
 
 ---> A privilégier. **Attention**, lors de l'installation, on vous demande votre nom d'utilisateur et un mot de passe (mdp). Bien retenir votre mdp car on en aura besoin + tard.
 
-- Un site un peu + vieux mais avec qqs infos intéressantes
+Un site un peu + vieux mais avec qqs infos intéressantes
 [Everything You Can Do With Windows 10’s New Bash Shell (2018)](https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/)
 
-- En dernier recours (car plus technique !):
+En dernier recours (car plus technique !):
 [Documentation officielle de Microsoft](https://docs.microsoft.com/fr-fr/windows/wsl/)
 
-- Note pour les utilisateurs de Windows 11. Certaines perspnnes m'ont fait remonter le problème suivant lors de l'installation depuis le Microsoft Store :
+Note pour les utilisateurs de Windows 11. Certaines perspnnes m'ont fait remonter le problème suivant lors de l'installation depuis le Microsoft Store :
 
 ![Problème avec Windows 11](img/pb_install_WSL_Win11.png){width=40%}
 
@@ -25,15 +25,15 @@ Pour remédier à cela, il faut apparemment activer la "Virtual Machine Platform
 
 Il se peut aussi que vous ayez à installer des packages supplémentaires si vous optez pour WSL2 comme décrit dans cette [page](https://docs.microsoft.com/fr-fr/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package).
 
-- Une fois WSL installé, tapez "bash" dans la barre Windows. Cliquez sur le lien. Vous devriez avoir un shell bash WSL. Toutefois vous constaterez avec "pwd" qu'il ouvre ce shell dans le répertoire "/mnt/c/WINDOWS/system32"
+Une fois WSL installé, tapez "bash" dans la barre Windows. Cliquez sur le lien. Vous devriez avoir un shell bash WSL. Toutefois vous constaterez avec `pwd` qu'il ouvre ce shell dans le répertoire `/mnt/c/WINDOWS/system32`.
 
-- Pour faire en sorte d'arriver dans votre répertoire utilisateur /home/user (où user est votre nom d'utilisateur sous WSL), quand le bash est ouvert épingler le dans votre barre Windows. Une fois épinglé, faites un clic droit sur l'icône, puis faite un clic droit "Lanceur Bash Microsoft", cliquer sur "propriétés". Dans l'onglet Raccourci, modifier la ligne "C:\Windows\System32\bash.exe" par "C:\Windows\System32\bash.exe ~".
+Pour faire en sorte d'arriver dans votre répertoire utilisateur /home/user (où user est votre nom d'utilisateur sous WSL), quand le bash est ouvert épingler le dans votre barre Windows. Une fois épinglé, faites un clic droit sur l'icône, puis faite un clic droit "Lanceur Bash Microsoft", cliquer sur "propriétés". Dans l'onglet Raccourci, modifier la ligne `C:\Windows\System32\bash.exe` par `C:\Windows\System32\bash.exe ~`.
 
-- Recliquez sur l'icône et faites un "pwd", vous devriez être dans votre home.
+Recliquez sur l'icône et faites un `pwd`, vous devriez être dans votre home.
 
-- Vous pouvez aussi avec "propriétés" régler tout un tas de choses dans votre shell (police, couleur de fond, etc.)
+Vous pouvez aussi avec "propriétés" régler tout un tas de choses dans votre shell (police, couleur de fond, etc.)
 
-- Si vous êtes prêt.e. à aller plus loin, il y a aussi le [terminal Windows](https://docs.microsoft.com/fr-fr/windows/terminal/install) qui permet de piloter un shell bash et qui est très puissant.
+Si vous êtes prêt.e. à aller plus loin, il y a aussi le [terminal Windows](https://docs.microsoft.com/fr-fr/windows/terminal/install) qui permet de piloter un shell bash et qui est très puissant.
 
 
 ## II) Mises à jour des paquets + installation de programmes de base
