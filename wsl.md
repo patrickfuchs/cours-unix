@@ -95,12 +95,21 @@ export DISPLAY=0.0
 
 Enregistrer et quitter le shell. Refaire le test avec gedit.
 
-Certaines personnes sous Windows 11 m'ont fait part que cela ne passait pas. Si c'est le cas, vous pouvez essayer avec la ligne export suivante :
+Certaines personnes sous Windows 11 m'ont fait part que cela ne passait pas, sans doute car c'est WSL2 qui est installé par défaut. Si c'est le cas, vous pouvez essayer avec la ligne export suivante :
 
 ```
 export DISPLAY=localhost:0.0
 ```
 
+Si ça ne fonctionne toujours pas sous Windows 11, vous pouvez essayez les 2 choses suivantes. D'abord la ligne export :
+
+```
+export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0.0
+```
+
+Ensuite, cochez la case "Disable access control" lorsque vous lancez X-launch.
+
+Sources : [ici](https://github.com/microsoft/WSL/issues/6430) et [là](https://stackoverflow.com/questions/61860208/wsl-2-run-graphical-linux-desktop-applications-from-windows-10-bash-shell-erro)
 
 ## IV) Voir Windows ds WSL, copier un fichier de Windows vers WSL ou WSL vers Windows
 
