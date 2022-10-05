@@ -65,6 +65,22 @@ Pour chercher un paquet:
 apt search nom_paquet
 ```
 
+Certaines personnes m'ont reporté des problèmes avec le programme gzip. En principe, si gzip fonctionne vous devriez obtenir :
+
+```
+$ gzip -h
+Usage: gzip [OPTION]... [FILE]...
+compress or uncompress FILEs (by default, compress FILES in-place).
+```
+
+Si vous obtenez quelque chose du style :
+
+```
+/usr/bin/gunzip: 57: exec: gzip: Exec format error
+```
+
+c'est sans doute que vous rencontrez ce [problème récent avec Ubuntu 22.04](https://github.com/microsoft/WSL/issues/8219). Pour l'instant, il n'est pas encore clair comment s'en sortir. Une solution proposée est de mettre à jour WSL vers WSL2 comme décrit [ici](https://stdworkflow.com/1604/wsl-ubuntu-22-04-lts-gzip-usr-bin-gunzip-57-exec-gzip-exec-format-error). Je n'ai toutefois pas testé cette solution...
+
 ## III) Pouvoir ouvrir une fenêtre 
 
 Télécharger et installerr VcXsrv
