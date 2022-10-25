@@ -81,6 +81,9 @@ Si vous obtenez quelque chose du style :
 
 c'est sans doute que vous rencontrez ce [problème récent avec Ubuntu 22.04](https://github.com/microsoft/WSL/issues/8219). Pour l'instant, il n'est pas encore clair comment s'en sortir. Une solution proposée est de mettre à jour WSL vers WSL2 comme décrit [ici](https://stdworkflow.com/1604/wsl-ubuntu-22-04-lts-gzip-usr-bin-gunzip-57-exec-gzip-exec-format-error). Je n'ai toutefois pas testé cette solution...
 
+*Edit 25 Oct 2022* : Voici une solution alternative trouvée en attendant que ce problème soit réglé. Installez 7-Zip côté Windows (https://www.7-zip.org/download.html). Avec 7-Zip vous pourrez sans problème "dé-gzipper" chaque fichier `.gz` puis vous le transférer sous WSL.
+
+
 ## III) Pouvoir ouvrir une fenêtre 
 
 Télécharger et installerr VcXsrv
