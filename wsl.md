@@ -1,4 +1,4 @@
-# Windows Sublsystem for Linux (WSL)
+# Windows Subsystem for Linux (WSL)
 
 Le *Windows Subsystem for Linux* ou WSL est un moyen d'installer Linux dans Windows 10 et 11. Nous conseillons d'installer WSL plutôt qu'un Linux dans une machine virtuelle car c'est plus rapide et vous pouvez faire la plupart des choses comme dans un vrai OS Linux.
 
