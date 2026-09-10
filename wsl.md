@@ -18,7 +18,7 @@ Pour cela, voici les étapes à suivre :
 
 Une fois Ubuntu 26.04 installée, vous pouvez lancer un shell bash Linux en cliquant sur la petite flèche descendante dans la barre de titre et sélectionner `Ubuntu 26.04`
 
-![terminal Windows après l'installation d'Ubuntu 26.04](img/windows_terminal_powershell.png)
+![terminal Windows après l'installation d'Ubuntu 26.04](img/windows_terminal_powershell.png){width=40%}
 
 Je vous conseille de mettre par défaut le lancement du shell bash (Linux Ubuntu 26.04) : i) clic droit sur la barre de titre, ii) settings, iii) Onglet Startup, iv) Default profile, v) Sélectionner Ubuntu 26.04.
 
