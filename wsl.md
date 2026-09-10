@@ -6,6 +6,30 @@ Dans cette page sont décrits les diverses opérations que j'ai pu noter pour  l
 
 ## I) Installation de WSL
 
+**Mise à jour de Septembre 2026**
+
+Je vous conseille maintenant l'installation de la dernière Ubuntu 26.04. Celle-ci présente de nombreux avantages, notamment c'est maintenant du WSL 2 (exécution plus rapide) et gestion en interne du système de fenêtrage (plus besoin d'un programme externe comme X-launch).
+
+Pour cela, voici les étapes à suivre :
+
+- Si vous ne l'avez pas déjà installé, je vous conseile vivement l'installation du [terminal Windows](https://learn.microsoft.com/fr-fr/windows/terminal/install).
+- Ouvrir un [Powershell](https://fr.wikipedia.org/wiki/Windows_PowerShell) dans un terminal Windows avec les droits d'administrateurs. (taper "powershell" dans la barre de tâches)
+- Lancez la commande suivante pour installer Ubuntu 26.04 / WSL : `wsl --install -d Ubuntu-26.04`
+
+Une fois Ubuntu 26.04 installée, vous pouvez lancer un shell bash Linux en cliquant sur la petite flèche descendante dans la barre de titre et sélectionner `Ubuntu 26.04`
+
+![terminal Windows après l'installation d'Ubuntu 26.04](img/windows_terminal_powershell.png)
+
+Je vous conseille de mettre par défaut le lancement du shell bash (Linux Ubuntu 26.04) : i) clic droit sur la barre de titre, ii) settings, iii) Onglet Startup, iv) Default profile, v) Sélectionner Ubuntu 26.04.
+
+Une fois cela fait, vous pouvez suivre la suite les étapes II), IV), V) et VI. (vous pouvez ignorer l'étape III) qui n'est plus nécessaire)
+
+***
+
+Ci-dessous, les anciennes instructions (je les laisse pour des raisons historiques, mais je vais bientôt les retirer ;-) ).
+
+***
+
 Une Vidéo très bien faite :
 [Installer le shell Bash Linux sous Windows 10 avec WSL (2020)](https://www.youtube.com/watch?v=CyG16N3GJWo)
 
@@ -35,6 +59,7 @@ Vous pouvez aussi avec "propriétés" régler tout un tas de choses dans votre s
 
 Si vous êtes prêt.e. à aller plus loin, il y a aussi le [terminal Windows](https://docs.microsoft.com/fr-fr/windows/terminal/install) qui permet de piloter un shell bash et qui est très puissant.
 
+***
 
 ## II) Mises à jour des paquets + installation de programmes de base
 
