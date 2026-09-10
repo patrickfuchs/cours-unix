@@ -24,7 +24,7 @@ Une fois Ubuntu 26.04 installée, vous pouvez lancer un shell bash Linux en cliq
 
 Je vous conseille de mettre par défaut le lancement du shell bash (Linux Ubuntu 26.04) : i) clic droit sur la barre de titre, ii) settings, iii) Onglet Startup, iv) Default profile, v) Sélectionner Ubuntu 26.04.
 
-Une fois cela fait, vous pouvez suivre les étapes II), IV), V) et VI) décrites dans la suite de ce document. (vous pouvez ignorer l'étape III) qui n'est plus nécessaire)
+Une fois cela fait, vous pouvez suivre les étapes II) à VIII) décrites dans la suite de ce document (mais vous pouvez ignorer l'étape III) qui n'est plus nécessaire). Pour l'étape VIII), GROMACS 2018.5 est maintenant une vieille version, je vous conseille la 2026.3 qui est plus récente ;-) (répétez les mêmes étapes en remplaçant 2018.5 par 2026.3).
 
 ***
 
