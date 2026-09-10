@@ -13,7 +13,7 @@ Je vous conseille maintenant l'installation de la dernière Ubuntu 26.04. Celle-
 Pour cela, voici les étapes à suivre :
 
 - Si vous ne l'avez pas déjà installé, je vous conseile vivement l'installation du [terminal Windows](https://learn.microsoft.com/fr-fr/windows/terminal/install).
-- Ouvrir un [Powershell](https://fr.wikipedia.org/wiki/Windows_PowerShell) dans un terminal Windows avec les droits d'administrateurs. (taper "powershell" dans la barre de tâches)
+- Ouvrir un [Powershell](https://fr.wikipedia.org/wiki/Windows_PowerShell) dans le terminal Windows avec les droits d'administrateurs : pour cela taper "terminal" dans la barre de tâches, puis quand l'icône apparait clic droit "Execute en tant qu'administrateur. Vous arriverez dans un Powershell avec les bons droits.
 - Lancez la commande suivante pour installer Ubuntu 26.04 / WSL : `wsl --install -d Ubuntu-26.04`
 
 Une fois Ubuntu 26.04 installée, vous pouvez lancer un shell bash Linux en cliquant sur la petite flèche descendante dans la barre de titre et sélectionner `Ubuntu 26.04`
@@ -22,7 +22,7 @@ Une fois Ubuntu 26.04 installée, vous pouvez lancer un shell bash Linux en cliq
 
 Je vous conseille de mettre par défaut le lancement du shell bash (Linux Ubuntu 26.04) : i) clic droit sur la barre de titre, ii) settings, iii) Onglet Startup, iv) Default profile, v) Sélectionner Ubuntu 26.04.
 
-Une fois cela fait, vous pouvez suivre la suite les étapes II), IV), V) et VI. (vous pouvez ignorer l'étape III) qui n'est plus nécessaire)
+Une fois cela fait, vous pouvez suivre les étapes II), IV), V) et VI) décrites dans la suite de ce document. (vous pouvez ignorer l'étape III) qui n'est plus nécessaire)
 
 ***
 
