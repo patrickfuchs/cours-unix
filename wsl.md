@@ -16,6 +16,8 @@ Pour cela, voici les étapes à suivre :
 - Ouvrir un [Powershell](https://fr.wikipedia.org/wiki/Windows_PowerShell) dans le terminal Windows avec les droits d'administrateurs : pour cela taper "terminal" dans la barre de tâches, puis quand l'icône apparait clic droit "Execute en tant qu'administrateur. Vous arriverez dans un Powershell avec les bons droits.
 - Lancez la commande suivante pour installer Ubuntu 26.04 / WSL : `wsl --install -d Ubuntu-26.04`
 
+---> **Attention**, lors de l'installation, on vous demande votre nom d'utilisateur et un mot de passe (mdp). Bien retenir votre mdp car on en aura besoin + tard.
+
 Une fois Ubuntu 26.04 installée, vous pouvez lancer un shell bash Linux en cliquant sur la petite flèche descendante dans la barre de titre et sélectionner `Ubuntu 26.04`
 
 ![terminal Windows après l'installation d'Ubuntu 26.04](img/windows_terminal_powershell.png){width=40%}
