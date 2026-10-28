@@ -297,6 +297,28 @@ Cela devrait lancer la fenêtre VMD.
 
 ## VIII) Installation GROMACS
 
+### a) Avec apt (conseillé)
+
+Pour installer GROMACS avec apt, rien de plus simple :
+
+```
+sudo apt install gromacs
+```
+
+Par défaut, GROMACS sera accessible en permanence (pas besoin de le *sourcer* comme dans l'installation par compilation). Pour le vérifier :
+
+```
+$ gmx -h
+                         :-) GROMACS - gmx, 2025.4 (-:
+[...]						 
+```
+
+La première ligne commence toujours par la version de GROMACS (ici 2025.4). Si vous obtenez `Command 'gmx' not found, [...]` c'est que la comande apt n'a pas fonctionné.
+
+### b) Par compilation
+
+*Edit 28 Oct 2026* : remplacer ci-dessous `2018.5` par `2026.3`.
+
 Se déplacer dans le répertoire "tools"
 
 ```
@@ -357,3 +379,5 @@ For help on a command, use 'gmx help <command>'.
 
 GROMACS reminds you: "Stop Drinking My Beer !" (The Amps)
 ```
+
+*Edit 28 Oct 2026* : Si vous l'avez installé par compilation, il faut systématiquement *sourcer* GROMACS pour que le bash le retrouve (`source /usr/local/gromacs-2018.5/bin/GMXRC`).
